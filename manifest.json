@@ -1,0 +1,18 @@
+{
+  "id": "/",
+  "name": "Prana Poker",
+  "short_name": "Prana Poker",
+  "description": "Logic and Intuition Training",
+  "lang": "en",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    { "src": "/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
