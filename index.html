@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="referrer" content="no-referrer" />
-<meta name="robots" content="noindex, nofollow" />
+<meta name="robots" content="index, follow" />
 <meta name="format-detection" content="telephone=no,date=no,address=no,email=no" />
 <meta name="theme-color" content="#000000" />
 <meta name="msapplication-navbutton-color" content="#000000" />
 <meta name="apple-mobile-web-app-capable" content="no" />
 <meta name="mobile-web-app-capable" content="no" />
 <title>Prana Poker</title>
+<link rel="icon" href="/icon.png" type="image/png" />
+<link rel="shortcut icon" href="/icon.png" type="image/png" />
+<link rel="apple-touch-icon" href="/icon.png" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="canonical" href="https://app.pranapoker.workers.dev/" />
+<meta name="description" content="Logic & Intuition Trainer in a Tournament Poker Simulator" />
+<meta name="keywords" content="Prana Poker, Poker Trainer, Poker Simulator, Poker Tournaments, Logic Training, Intuition Training" />
+<meta property="og:site_name" content="Prana Poker" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content="Prana Poker" />
+<meta property="og:description" content="Logic & Intuition Trainer in a Tournament Poker Simulator" />
+<meta property="og:url" content="https://app.pranapoker.workers.dev/" />
+<meta property="og:image" content="https://app.pranapoker.workers.dev/cover.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Prana Poker — Logic & Intuition Trainer in a Tournament Poker Simulator" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Prana Poker" />
+<meta name="twitter:description" content="Logic & Intuition Trainer in a Tournament Poker Simulator" />
+<meta name="twitter:image" content="https://app.pranapoker.workers.dev/cover.jpg" />
+<meta name="twitter:image:alt" content="Prana Poker — Logic & Intuition Trainer in a Tournament Poker Simulator" />
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
@@ -1333,9 +1355,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   }
 }
 
-/* Кнопки Fold и Check и Call в истории раздач: скрытые тап-зоны.
-   Внешне ничем не отличаются от приглушённых кнопок, курсор обычный.
-   Тап программно копирует нужный лог, визуально ничего не происходит. */
 #hero-actions.inactive #hero-buttons #btn-check.history-copy-active,
 #hero-actions.inactive #hero-buttons #btn-fold.history-copy-active,
 #hero-actions.inactive #hero-buttons #btn-call.history-copy-active {
@@ -1358,7 +1377,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   pointer-events: auto !important;
 }
 
-/* ===================== КАРТА ДОНАТА ===================== */
 #donate-overlay {
   position: fixed;
   inset: 0;
@@ -1551,10 +1569,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   .donate-card-bottom-line { font-size: clamp(11px, 1.7vmin, 13.5px); }
   .donate-card-copied { font-size: clamp(13px, 1.7vmin, 15.5px); }
 }
-/* ===================== /КАРТА ДОНАТА ===================== */
 </style>
 </head>
 <body>
+
+<div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+  <h1>Prana Poker</h1>
+  <p>Logic & Intuition Trainer in a Tournament Poker Simulator.</p>
+</div>
 
 <div id="app">
 
@@ -1586,13 +1608,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
         <div id="hero-actions" class="inactive">
           <div id="hand-nav">
             <div class="nav-history">
-              <button id="hn-prev" title="Назад" disabled>◀︎</button>
+              <button id="hn-prev" title="Back" disabled>◀︎</button>
               <span class="nav-counter"><span id="hn-cur">0</span><span class="total"> / </span><span id="hn-tot">0</span></span>
-              <button id="hn-next" title="Вперёд" disabled>▶︎</button>
+              <button id="hn-next" title="Forward" disabled>▶︎</button>
             </div>
-            <button id="hn-replay" title="Реплей">▶︎⏸︎</button>
-            <button id="hn-resume" title="Продолжить" disabled>▶︎▶︎</button>
-            <button id="hn-restart" title="Начать заново"><svg class="hn-restart-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></button>
+            <button id="hn-replay" title="Replay">▶︎⏸︎</button>
+            <button id="hn-resume" title="Resume" disabled>▶︎▶︎</button>
+            <button id="hn-restart" title="Restart"><svg class="hn-restart-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></button>
           </div>
           <div id="hero-slider-row">
             <div id="raise-slider-track">
@@ -1665,9 +1687,9 @@ window.addEventListener('unhandledrejection', function(ev) {
 (function() {
   try {
     console.log('%cSTOP!', 'color:#e63946;font-size:48px;font-weight:900;text-shadow:2px 2px 0 #000;');
-    console.log('%cЭтот код защищён авторским правом.', 'color:#ffcb2b;font-size:16px;font-weight:700;');
-    console.log('%cКопирование, распространение и использование без разрешения автора запрещено.', 'color:#ffcb2b;font-size:14px;');
-    console.log('%c© Все права защищены.', 'color:#8a8a8a;font-size:12px;');
+    console.log('%cThis code is protected by copyright.', 'color:#ffcb2b;font-size:16px;font-weight:700;');
+    console.log('%cCopying, distribution and use without the author\'s permission are prohibited.', 'color:#ffcb2b;font-size:14px;');
+    console.log('%c© All rights reserved.', 'color:#8a8a8a;font-size:12px;');
   } catch (e) {}
 })();
 
@@ -1906,17 +1928,17 @@ const Engine = (() => {
     const groups = Object.entries(freq).map(([v, c]) => [c, Number(v)]).sort((a, b) => b[0] - a[0] || b[1] - a[1]);
 
     if (isFlush && straightHigh) {
-      if (straightHigh === 14) return { category: HAND_CATEGORIES.ROYAL_FLUSH, ranks: [14], cards, name: 'Роял-флеш' };
-      return { category: HAND_CATEGORIES.STRAIGHT_FLUSH, ranks: [straightHigh], cards, name: 'Стрит-флеш' };
+      if (straightHigh === 14) return { category: HAND_CATEGORIES.ROYAL_FLUSH, ranks: [14], cards, name: 'Royal Flush' };
+      return { category: HAND_CATEGORIES.STRAIGHT_FLUSH, ranks: [straightHigh], cards, name: 'Straight Flush' };
     }
-    if (groups[0][0] === 4) return { category: HAND_CATEGORIES.QUADS, ranks: [groups[0][1], groups[1][1]], cards, name: 'Каре' };
-    if (groups[0][0] === 3 && groups[1] && groups[1][0] === 2) return { category: HAND_CATEGORIES.FULL_HOUSE, ranks: [groups[0][1], groups[1][1]], cards, name: 'Фулл-хаус' };
-    if (isFlush) return { category: HAND_CATEGORIES.FLUSH, ranks: values, cards, name: 'Флеш' };
-    if (straightHigh) return { category: HAND_CATEGORIES.STRAIGHT, ranks: [straightHigh], cards, name: 'Стрит' };
-    if (groups[0][0] === 3) return { category: HAND_CATEGORIES.TRIPS, ranks: [groups[0][1], ...groups.slice(1).map(g => g[1])], cards, name: 'Сет' };
-    if (groups[0][0] === 2 && groups[1] && groups[1][0] === 2) return { category: HAND_CATEGORIES.TWO_PAIR, ranks: [groups[0][1], groups[1][1], groups[2][1]], cards, name: 'Две пары' };
-    if (groups[0][0] === 2) return { category: HAND_CATEGORIES.PAIR, ranks: [groups[0][1], ...groups.slice(1).map(g => g[1])], cards, name: 'Пара' };
-    return { category: HAND_CATEGORIES.HIGH_CARD, ranks: values, cards, name: 'Старшая карта' };
+    if (groups[0][0] === 4) return { category: HAND_CATEGORIES.QUADS, ranks: [groups[0][1], groups[1][1]], cards, name: 'Four of a Kind' };
+    if (groups[0][0] === 3 && groups[1] && groups[1][0] === 2) return { category: HAND_CATEGORIES.FULL_HOUSE, ranks: [groups[0][1], groups[1][1]], cards, name: 'Full House' };
+    if (isFlush) return { category: HAND_CATEGORIES.FLUSH, ranks: values, cards, name: 'Flush' };
+    if (straightHigh) return { category: HAND_CATEGORIES.STRAIGHT, ranks: [straightHigh], cards, name: 'Straight' };
+    if (groups[0][0] === 3) return { category: HAND_CATEGORIES.TRIPS, ranks: [groups[0][1], ...groups.slice(1).map(g => g[1])], cards, name: 'Three of a Kind' };
+    if (groups[0][0] === 2 && groups[1] && groups[1][0] === 2) return { category: HAND_CATEGORIES.TWO_PAIR, ranks: [groups[0][1], groups[1][1], groups[2][1]], cards, name: 'Two Pair' };
+    if (groups[0][0] === 2) return { category: HAND_CATEGORIES.PAIR, ranks: [groups[0][1], ...groups.slice(1).map(g => g[1])], cards, name: 'One Pair' };
+    return { category: HAND_CATEGORIES.HIGH_CARD, ranks: values, cards, name: 'High Card' };
   }
 
   function compareScores(a, b) {
@@ -2145,7 +2167,7 @@ const Engine = (() => {
 
   function applyAction(state, playerIndex, action) {
     const p = state.players[playerIndex];
-    if (!p || p.folded || p.allIn || p.eliminated) return { ok: false, error: 'Игрок не может действовать' };
+    if (!p || p.folded || p.allIn || p.eliminated) return { ok: false, error: 'Player cannot act' };
     const toCall = Math.max(0, state.currentBet - p.committedThisStreet);
 
     switch (action.type) {
@@ -2154,7 +2176,7 @@ const Engine = (() => {
         break;
 
       case 'check':
-        if (toCall > 0) return { ok: false, error: 'Нельзя чекнуть' };
+        if (toCall > 0) return { ok: false, error: 'Cannot check' };
         p.hasActedThisStreet = true; p.lastAction = 'check';
         p.acted = true;
         break;
@@ -2171,12 +2193,12 @@ const Engine = (() => {
       }
 
       case 'bet': {
-        if (state.currentBet > 0) return { ok: false, error: 'На этой улице уже есть ставка' };
-        if (p.committedThisStreet > 0) return { ok: false, error: 'Уже есть вложение' };
+        if (state.currentBet > 0) return { ok: false, error: 'Already a bet on this street' };
+        if (p.committedThisStreet > 0) return { ok: false, error: 'Already a contribution' };
         const target = action.amount;
-        if (target <= 0) return { ok: false, error: 'Ставка должна быть больше нуля' };
+        if (target <= 0) return { ok: false, error: 'Bet must be positive' };
         const need = target - p.committedThisStreet;
-        if (need > p.stack) return { ok: false, error: 'Недостаточно фишек' };
+        if (need > p.stack) return { ok: false, error: 'Not enough chips' };
         p.stack -= need; p.committedThisStreet += need;
         p.committedTotal += need; state.pot += need;
         state.minRaise = Math.max(state.minRaise, target);
@@ -2193,11 +2215,11 @@ const Engine = (() => {
 
       case 'raise': {
         const target = action.amount;
-        if (target <= state.currentBet) return { ok: false, error: 'Рейз меньше ставки' };
+        if (target <= state.currentBet) return { ok: false, error: 'Raise below current bet' };
         const need = target - p.committedThisStreet;
-        if (need > p.stack) return { ok: false, error: 'Недостаточно фишек' };
+        if (need > p.stack) return { ok: false, error: 'Not enough chips' };
         const raiseSize = target - state.currentBet;
-        if (raiseSize < state.minRaise && need < p.stack) return { ok: false, error: 'Рейз меньше минимума' };
+        if (raiseSize < state.minRaise && need < p.stack) return { ok: false, error: 'Raise below minimum' };
         p.stack -= need; p.committedThisStreet += need;
         p.committedTotal += need; state.pot += need;
         state.minRaise = Math.max(state.minRaise, raiseSize);
@@ -2231,7 +2253,7 @@ const Engine = (() => {
         break;
       }
 
-      default: return { ok: false, error: 'Неизвестное действие: ' + action.type };
+      default: return { ok: false, error: 'Unknown action: ' + action.type };
     }
     return { ok: true };
   }
@@ -3427,9 +3449,9 @@ const UI = (() => {
 
   function setReplayButtonState(state) {
     if (!el.hnReplay) return;
-    if (state === 'replay') { el.hnReplay.textContent = '▶︎⏸︎'; el.hnReplay.title = 'Реплей'; }
-    else if (state === 'pause') { el.hnReplay.textContent = '⏸︎'; el.hnReplay.title = 'Пауза'; }
-    else if (state === 'play') { el.hnReplay.textContent = '▶︎'; el.hnReplay.title = 'Продолжить'; }
+    if (state === 'replay') { el.hnReplay.textContent = '▶︎⏸︎'; el.hnReplay.title = 'Replay'; }
+    else if (state === 'pause') { el.hnReplay.textContent = '⏸︎'; el.hnReplay.title = 'Pause'; }
+    else if (state === 'play') { el.hnReplay.textContent = '▶︎'; el.hnReplay.title = 'Resume'; }
   }
 
   function setTimerState(state) {
@@ -4570,13 +4592,13 @@ const UI = (() => {
   }
 
   function streetRu(s) {
-    return ({ preflop:'префлоп', flop:'флоп', turn:'тёрн', river:'ривер' })[s] || s;
+    return ({ preflop:'preflop', flop:'flop', turn:'turn', river:'river' })[s] || s;
   }
 
   function actionRu(a) {
     return ({
-      fold:'фолд', check:'чек', call:'колл', raise:'рейз', bet:'бет',
-      allin:'олл-ин', sb:'SB', bb:'BB'
+      fold:'fold', check:'check', call:'call', raise:'raise', bet:'bet',
+      allin:'all-in', sb:'SB', bb:'BB'
     })[a] || a;
   }
 
@@ -4631,57 +4653,57 @@ const UI = (() => {
   function buildReport(snap, meta) {
     const L = [];
     const now = new Date();
-    L.push('=== PRANA POKER — ЛОГ РАЗДАЧИ ===');
-    L.push('Снято: ' + now.toLocaleString('ru-RU'));
-    L.push('Версия формата: v1');
-    L.push('Номер раздачи: #' + snap.handNumber);
-    L.push('Уровень блайндов (индекс): ' + snap.levelIndex);
-    L.push('Блайнды: SB ' + snap.blinds.sb + ' / BB ' + snap.blinds.bb + (snap.blinds.ante > 0 ? ' / анте ' + snap.blinds.ante : ''));
-    L.push('Номер кнопки (баттон, внутренний индекс): ' + snap.buttonIndex);
-    L.push('Финальная улица: ' + (snap.finalStreet ? streetRu(snap.finalStreet) : '—'));
-    L.push('Раздача завершена: ' + (snap.handOver ? 'да' : 'нет'));
-    L.push('Режим снятия: ' + (meta.viewingPast ? 'история' : 'живая') + (meta.replayActive ? ' / реплей' : ''));
+    L.push('=== PRANA POKER — HAND LOG ===');
+    L.push('Captured: ' + now.toLocaleString('en-US'));
+    L.push('Format version: v1');
+    L.push('Hand number: #' + snap.handNumber);
+    L.push('Blind level (index): ' + snap.levelIndex);
+    L.push('Blinds: SB ' + snap.blinds.sb + ' / BB ' + snap.blinds.bb + (snap.blinds.ante > 0 ? ' / ante ' + snap.blinds.ante : ''));
+    L.push('Button number (internal index): ' + snap.buttonIndex);
+    L.push('Final street: ' + (snap.finalStreet ? streetRu(snap.finalStreet) : '—'));
+    L.push('Hand complete: ' + (snap.handOver ? 'yes' : 'no'));
+    L.push('Capture mode: ' + (meta.viewingPast ? 'history' : 'live') + (meta.replayActive ? ' / replay' : ''));
     L.push('');
 
-    L.push('--- СОСТАВ СТОЛА ---');
+    L.push('--- TABLE COMPOSITION ---');
     for (const p of snap.players) {
       const cls = p.botClass || (p.isHero ? 'HERO' : '—');
-      const type = p.botType || (p.isHero ? 'Игрок' : '—');
-      L.push('Место ' + p.seatIndex +
+      const type = p.botType || (p.isHero ? 'Player' : '—');
+      L.push('Seat ' + p.seatIndex +
         ' | ' + p.name +
-        ' | ' + (p.isHero ? 'ГЕРОЙ' : 'бот') +
-        ' | тип ' + type + ' | класс ' + cls +
-        ' | позиция ' + (p.position || '—') +
-        ' | стек ' + p.stack +
-        (p.eliminated ? ' | ВЫБЫЛ' : '') +
-        (p.inHand ? ' | в раздаче' : '') +
-        ' | карты: ' + cardsStr(p.holeCards));
+        ' | ' + (p.isHero ? 'HERO' : 'bot') +
+        ' | type ' + type + ' | class ' + cls +
+        ' | position ' + (p.position || '—') +
+        ' | stack ' + p.stack +
+        (p.eliminated ? ' | ELIMINATED' : '') +
+        (p.inHand ? ' | in hand' : '') +
+        ' | cards: ' + cardsStr(p.holeCards));
     }
     L.push('');
 
-    L.push('--- БОРД ---');
+    L.push('--- BOARD ---');
     if (snap.board.length === 0) {
-      L.push('Борд пуст (до флопа не дошло)');
+      L.push('Board empty (did not reach flop)');
     } else {
-      L.push('Итоговый борд: ' + cardsStr(snap.board));
+      L.push('Final board: ' + cardsStr(snap.board));
       const parts = [];
-      if (snap.board.length >= 3) parts.push('флоп: ' + cardsStr(snap.board.slice(0,3)));
-      if (snap.board.length >= 4) parts.push('тёрн: ' + cardStr(snap.board[3]));
-      if (snap.board.length >= 5) parts.push('ривер: ' + cardStr(snap.board[4]));
+      if (snap.board.length >= 3) parts.push('flop: ' + cardsStr(snap.board.slice(0,3)));
+      if (snap.board.length >= 4) parts.push('turn: ' + cardStr(snap.board[3]));
+      if (snap.board.length >= 5) parts.push('river: ' + cardStr(snap.board[4]));
       L.push(parts.join(' | '));
       const tex = Texture.analyze(snap.board);
-      L.push('Текстура: мокрость ' + fmtNum(tex.wet) +
-        ' | парная ' + (tex.paired ? 'да' : 'нет') +
-        ' | флеш-возможность ' + (tex.flushPossible ? 'да (' + (tex.flushSuit || '?') + ', ' + tex.suitedCount + ' шт)' : 'нет') +
-        ' | стрит-возможность ' + (tex.straightPossible ? 'да' : 'нет') +
-        ' | старшая ' + tex.highCard);
+      L.push('Texture: wetness ' + fmtNum(tex.wet) +
+        ' | paired ' + (tex.paired ? 'yes' : 'no') +
+        ' | flush possible ' + (tex.flushPossible ? 'yes (' + (tex.flushSuit || '?') + ', ' + tex.suitedCount + ')' : 'no') +
+        ' | straight possible ' + (tex.straightPossible ? 'yes' : 'no') +
+        ' | high card ' + tex.highCard);
     }
     L.push('');
 
-    L.push('--- ПОШАГОВЫЙ ЛОГ ДЕЙСТВИЙ ---');
+    L.push('--- ACTION LOG ---');
     const log = snap.actionLog || [];
     if (log.length === 0) {
-      L.push('Действий нет');
+      L.push('No actions');
     } else {
       let lastStreet = null;
       let step = 0;
@@ -4690,54 +4712,54 @@ const UI = (() => {
         if (a.street !== lastStreet) {
           lastStreet = a.street;
           L.push('');
-          L.push('>> Улица: ' + streetRu(a.street));
+          L.push('>> Street: ' + streetRu(a.street));
         }
         const p = snap.players.find(pl => pl.seatIndex === a.playerIndex);
-        const who = p ? (p.name + ' [' + (p.position || '?') + ']') : ('место ' + a.playerIndex);
+        const who = p ? (p.name + ' [' + (p.position || '?') + ']') : ('seat ' + a.playerIndex);
         L.push('  #' + step + ' ' + who + ' → ' + actionRu(a.actionType) +
           (a.amount ? ' ' + a.amount : '') +
-          ' | пот после: ' + (a.potAfter !== undefined ? a.potAfter : '—'));
+          ' | pot after: ' + (a.potAfter !== undefined ? a.potAfter : '—'));
 
         if (a.botCtx) {
           const c = a.botCtx;
-          L.push('       [РЕШЕНИЕ БОТА — вход]');
-          L.push('       тип: ' + c.botType + ' / класс ' + c.botClass);
-          L.push('       позиция: ' + c.position + ' | стек BB: ' + fmtNum(c.stackBB) + ' | активных: ' + c.numActive);
-          L.push('       улица: ' + streetRu(c.street) + ' | пот: ' + fmtNum(c.pot) + ' | к коллу: ' + fmtNum(c.toCall) +
-            ' | мин-рейз: ' + fmtNum(c.minRaise) + ' | текущая ставка: ' + fmtNum(c.currentBet));
-          L.push('       стек: ' + fmtNum(c.myStack) + ' | вложено на улице: ' + fmtNum(c.committedThisStreet) +
-            ' | всего: ' + fmtNum(c.committedTotal));
-          L.push('       карты: ' + cardsStr(c.holeCards) + ' | борд: ' + cardsStr(c.board));
-          L.push('       комбинация: ' + (c.handName || '—') + ' | сила: ' + fmtNum(c.handStrength));
+          L.push('       [BOT DECISION — input]');
+          L.push('       type: ' + c.botType + ' / class ' + c.botClass);
+          L.push('       position: ' + c.position + ' | stack BB: ' + fmtNum(c.stackBB) + ' | active: ' + c.numActive);
+          L.push('       street: ' + streetRu(c.street) + ' | pot: ' + fmtNum(c.pot) + ' | to call: ' + fmtNum(c.toCall) +
+            ' | min raise: ' + fmtNum(c.minRaise) + ' | current bet: ' + fmtNum(c.currentBet));
+          L.push('       stack: ' + fmtNum(c.myStack) + ' | invested this street: ' + fmtNum(c.committedThisStreet) +
+            ' | total: ' + fmtNum(c.committedTotal));
+          L.push('       cards: ' + cardsStr(c.holeCards) + ' | board: ' + cardsStr(c.board));
+          L.push('       hand: ' + (c.handName || '—') + ' | strength: ' + fmtNum(c.handStrength));
           if (c.texture) {
-            L.push('       текстура: мокрость ' + fmtNum(c.texture.wet) +
-              ' | парная ' + (c.texture.paired ? 'да' : 'нет') +
-              ' | флеш ' + (c.texture.flushPossible ? 'да' : 'нет') +
-              ' | стрит ' + (c.texture.straightPossible ? 'да' : 'нет') +
-              ' | старшая ' + c.texture.highCard);
+            L.push('       texture: wetness ' + fmtNum(c.texture.wet) +
+              ' | paired ' + (c.texture.paired ? 'yes' : 'no') +
+              ' | flush ' + (c.texture.flushPossible ? 'yes' : 'no') +
+              ' | straight ' + (c.texture.straightPossible ? 'yes' : 'no') +
+              ' | high card ' + c.texture.highCard);
           }
-          L.push('       агрессор улицы: ' + (c.isAggressor ? 'да' : 'нет'));
+          L.push('       street aggressor: ' + (c.isAggressor ? 'yes' : 'no'));
           if (c.oppName) {
-            L.push('       оппонент: ' + c.oppName + ' [' + c.oppPosition + ']' +
-              ' | стек BB: ' + fmtNum(c.oppStackBB) + ' | последнее: ' + actionRu(c.oppLastAction || '—'));
+            L.push('       opponent: ' + c.oppName + ' [' + c.oppPosition + ']' +
+              ' | stack BB: ' + fmtNum(c.oppStackBB) + ' | last: ' + actionRu(c.oppLastAction || '—'));
           }
           if (c.oppRead) {
-            L.push('       прочтение: рук ' + c.oppRead.hands +
+            L.push('       read: hands ' + c.oppRead.hands +
               ' | VPIP ' + fmtEq(c.oppRead.vpipRate) +
               ' | PFR ' + fmtEq(c.oppRead.pfrRate) +
-              ' | фолд ' + fmtEq(c.oppRead.foldRate) +
-              ' | агрессия ' + fmtNum(c.oppRead.aggIndex));
+              ' | fold ' + fmtEq(c.oppRead.foldRate) +
+              ' | aggression ' + fmtNum(c.oppRead.aggIndex));
           }
           if (c.icm) {
             L.push('       ICM: bubble factor ' + fmtNum(c.icm.bubbleFactor) +
-              ' | игроков: ' + c.icm.playersLeft +
-              ' | до призов: ' + c.icm.prizeSpots);
+              ' | players: ' + c.icm.playersLeft +
+              ' | prize spots: ' + c.icm.prizeSpots);
           }
-          if (c.eq !== null && c.eq !== undefined) L.push('       эквити: ' + fmtEq(c.eq));
+          if (c.eq !== null && c.eq !== undefined) L.push('       equity: ' + fmtEq(c.eq));
           if (c.potOdds !== null && c.potOdds !== undefined) L.push('       pot odds: ' + fmtEq(c.potOdds));
-          if (c.adjPotOdds !== null && c.adjPotOdds !== undefined) L.push('       pot odds с ICM: ' + fmtEq(c.adjPotOdds));
+          if (c.adjPotOdds !== null && c.adjPotOdds !== undefined) L.push('       pot odds with ICM: ' + fmtEq(c.adjPotOdds));
           if (c.profile) {
-            L.push('       профиль: aggression ' + fmtNum(c.profile.aggression) +
+            L.push('       profile: aggression ' + fmtNum(c.profile.aggression) +
               ' | looseness ' + fmtNum(c.profile.looseness) +
               ' | bluff ' + fmtNum(c.profile.bluff) +
               ' | callThreshold ' + fmtNum(c.profile.callThreshold) +
@@ -4745,97 +4767,97 @@ const UI = (() => {
               ' | tightBubble ' + fmtNum(c.profile.tightBubble));
           }
           if (c.meta) {
-            L.push('       образ: ' + c.meta.image +
-              ' | моды aggression ' + fmtNum(c.meta.mods.aggression) +
+            L.push('       image: ' + c.meta.image +
+              ' | mods aggression ' + fmtNum(c.meta.mods.aggression) +
               ' | looseness ' + fmtNum(c.meta.mods.looseness) +
               ' | bluff ' + fmtNum(c.meta.mods.bluff));
           }
-          if (c.adaptBonus !== undefined) L.push('       бонус адаптации: ' + fmtNum(c.adaptBonus));
-          if (c.icmAdjust !== undefined) L.push('       ICM-поправка: ' + fmtNum(c.icmAdjust));
+          if (c.adaptBonus !== undefined) L.push('       adapt bonus: ' + fmtNum(c.adaptBonus));
+          if (c.icmAdjust !== undefined) L.push('       ICM adjust: ' + fmtNum(c.icmAdjust));
           if (c.plan) {
-            L.push('       план: флоп ' + c.plan.flop +
-              ' | тёрн-сухо ' + c.plan.turnIfBlank +
-              ' | тёрн-мокро ' + c.plan.turnIfWet +
-              ' | ривер ' + c.plan.riverIfCompleted);
-            if (c.planDecision) L.push('       решение по плану: ' + c.planDecision);
+            L.push('       plan: flop ' + c.plan.flop +
+              ' | turn-dry ' + c.plan.turnIfBlank +
+              ' | turn-wet ' + c.plan.turnIfWet +
+              ' | river ' + c.plan.riverIfCompleted);
+            if (c.planDecision) L.push('       plan decision: ' + c.planDecision);
           }
-          if (c.reason) L.push('       ИТОГ: ' + c.reason);
+          if (c.reason) L.push('       RESULT: ' + c.reason);
         }
 
         if (a.heroCtx) {
           const h = a.heroCtx;
-          L.push('       [ДЕЙСТВИЕ ГЕРОЯ]');
-          L.push('       улица: ' + streetRu(h.street) + ' | действие: ' + actionRu(h.action) +
+          L.push('       [HERO ACTION]');
+          L.push('       street: ' + streetRu(h.street) + ' | action: ' + actionRu(h.action) +
             (h.amount ? ' ' + h.amount : ''));
-          L.push('       пот до: ' + fmtNum(h.potBefore) + ' | после: ' + fmtNum(h.potAfter));
-          L.push('       стек до: ' + fmtNum(h.stackBefore) + ' | после: ' + fmtNum(h.stackAfter));
-          L.push('       вложено на улице: ' + fmtNum(h.committedThisStreet) +
-            ' | всего: ' + fmtNum(h.committedTotal));
-          L.push('       быстрые ставки: ' + (h.quickOptions || []).join(', '));
-          L.push('       ползунок: значение ' + fmtNum(h.sliderValue) +
-            ' | колл ' + fmtNum(h.sliderCall) +
-            ' | мин-рейз ' + fmtNum(h.sliderMinRaise) +
-            ' | макс ' + fmtNum(h.sliderMax));
-          L.push('       кнопка колл: ' + h.btnLabel + ' ' + h.btnAmount +
-            ' | мини-окошко: ' + h.miniAmount);
+          L.push('       pot before: ' + fmtNum(h.potBefore) + ' | after: ' + fmtNum(h.potAfter));
+          L.push('       stack before: ' + fmtNum(h.stackBefore) + ' | after: ' + fmtNum(h.stackAfter));
+          L.push('       invested this street: ' + fmtNum(h.committedThisStreet) +
+            ' | total: ' + fmtNum(h.committedTotal));
+          L.push('       quick bets: ' + (h.quickOptions || []).join(', '));
+          L.push('       slider: value ' + fmtNum(h.sliderValue) +
+            ' | call ' + fmtNum(h.sliderCall) +
+            ' | min raise ' + fmtNum(h.sliderMinRaise) +
+            ' | max ' + fmtNum(h.sliderMax));
+          L.push('       call button: ' + h.btnLabel + ' ' + h.btnAmount +
+            ' | mini amount: ' + h.miniAmount);
         }
       }
     }
     L.push('');
 
-    L.push('--- ИТОГИ РАЗДАЧИ ---');
+    L.push('--- HAND RESULTS ---');
     if (!snap.showdownResults) {
-      L.push('Итоги недоступны');
+      L.push('Results unavailable');
     } else {
       const sr = snap.showdownResults;
-      if (sr.uncontested) L.push('Без вскрытия (все сфолдили)');
+      if (sr.uncontested) L.push('No showdown (all folded)');
       if (sr.scores) {
         for (const [id, sc] of Object.entries(sr.scores)) {
           const p = snap.players.find(pl => String(pl.id) === String(id));
           if (!p) continue;
-          if (!sc) { L.push('  ' + p.name + ': не дошёл до вскрытия'); continue; }
-          L.push('  ' + p.name + ' [' + (p.position || '?') + '] карты ' + cardsStr(p.holeCards) +
-            ' → ' + sc.name + ' (сила категории ' + sc.category + ', ранги ' + (sc.ranks || []).join(',') + ')');
+          if (!sc) { L.push('  ' + p.name + ': did not reach showdown'); continue; }
+          L.push('  ' + p.name + ' [' + (p.position || '?') + '] cards ' + cardsStr(p.holeCards) +
+            ' → ' + sc.name + ' (category strength ' + sc.category + ', ranks ' + (sc.ranks || []).join(',') + ')');
         }
       }
       L.push('');
-      L.push('  Сайд-поты:');
+      L.push('  Side pots:');
       for (let i = 0; i < (sr.pots || []).length; i++) {
         const pot = sr.pots[i];
-        L.push('   пот #' + (i + 1) + ': сумма ' + pot.amount + ' | победители: ' + (pot.winners || []).join(', '));
+        L.push('   pot #' + (i + 1) + ': amount ' + pot.amount + ' | winners: ' + (pot.winners || []).join(', '));
       }
       L.push('');
-      L.push('  Выплаты:');
+      L.push('  Payouts:');
       for (const [id, amount] of Object.entries(sr.payouts || {})) {
         const p = snap.players.find(pl => String(pl.id) === String(id));
         if (!p) continue;
         const committed = p.committedTotal || 0;
-        L.push('   ' + p.name + ': получил ' + amount + ' | вложил ' + committed + ' | чистый ' + (amount - committed));
+        L.push('   ' + p.name + ': received ' + amount + ' | invested ' + committed + ' | net ' + (amount - committed));
       }
     }
     L.push('');
 
-    L.push('--- ВИЗУАЛ НА КОНЕЦ РАЗДАЧИ ---');
+    L.push('--- END-OF-HAND VISUALS ---');
     const alive = snap.players.filter(p => !p.eliminated);
-    L.push('Ранг/ITM: ' + (alive.length > 0 ? 'активных ' + alive.length + ' из ' + snap.players.length + ', ITM 3' : '—'));
-    L.push('Пот-строка: Pot: ' + (UI.formatChips ? UI.formatChips(snap.pot, snap) : snap.pot));
-    L.push('Строка блайндов: Blinds: ' + snap.blinds.sb + '/' + snap.blinds.bb +
+    L.push('Rank/ITM: ' + (alive.length > 0 ? 'active ' + alive.length + ' of ' + snap.players.length + ', ITM 3' : '—'));
+    L.push('Pot line: Pot: ' + (UI.formatChips ? UI.formatChips(snap.pot, snap) : snap.pot));
+    L.push('Blinds line: Blinds: ' + snap.blinds.sb + '/' + snap.blinds.bb +
       (snap.blinds.ante > 0 ? ' (' + snap.blinds.ante + ')' : ''));
-    L.push('Борд на экране: ' + cardsStr(snap.board));
+    L.push('Board on screen: ' + cardsStr(snap.board));
     L.push('');
-    L.push('Места:');
+    L.push('Seats:');
     for (const p of snap.players) {
-      const vis = 'место ' + p.seatIndex;
+      const vis = 'seat ' + p.seatIndex;
       const state = [];
-      if (p.folded) state.push('сфолдил');
-      if (p.eliminated) state.push('выбыл');
-      if (p.acted) state.push('действовал');
+      if (p.folded) state.push('folded');
+      if (p.eliminated) state.push('eliminated');
+      if (p.acted) state.push('acted');
       L.push('  ' + vis + ' | ' + p.name +
-        ' | позиция ' + (p.position || '—') +
-        ' | стек ' + p.stack +
-        ' | карты ' + (p.holeCards && p.holeCards.length ? cardsStr(p.holeCards) : '—') +
-        ' | ' + (state.length ? state.join(', ') : 'активен') +
-        ' | дельта: ' + (function() {
+        ' | position ' + (p.position || '—') +
+        ' | stack ' + p.stack +
+        ' | cards ' + (p.holeCards && p.holeCards.length ? cardsStr(p.holeCards) : '—') +
+        ' | ' + (state.length ? state.join(', ') : 'active') +
+        ' | delta: ' + (function() {
           const payouts = (snap.showdownResults && snap.showdownResults.payouts) || {};
           const payout = payouts[p.id] || 0;
           const committed = p.committedTotal || 0;
@@ -4845,16 +4867,16 @@ const UI = (() => {
         })());
     }
     L.push('');
-    L.push('Настройки визуала:');
-    L.push('  стиль карт: ' + (UI.settings ? UI.settings.cardStyle : '—'));
-    L.push('  отображение стеков: ' + (UI.settings ? UI.settings.stackDisplay : '—'));
-    L.push('  скрыть карты героя: ' + (UI.settings && UI.settings.hideHeroHand ? 'да' : 'нет'));
-    L.push('  скрыть карты борда: ' + (UI.settings && UI.settings.hideBoardCards ? 'да' : 'нет'));
-    L.push('  показать всех: ' + (UI.settings && UI.settings.showAllHands ? 'да' : 'нет'));
-    L.push('  период роста блайндов: ' + (UI.settings ? UI.settings.blindGrowthHands : '—'));
-    L.push('  время на ход: ' + (UI.settings ? UI.settings.turnTime : '—') + ' сек');
+    L.push('Visual settings:');
+    L.push('  card style: ' + (UI.settings ? UI.settings.cardStyle : '—'));
+    L.push('  stack display: ' + (UI.settings ? UI.settings.stackDisplay : '—'));
+    L.push('  hide hero hand: ' + (UI.settings && UI.settings.hideHeroHand ? 'yes' : 'no'));
+    L.push('  hide board cards: ' + (UI.settings && UI.settings.hideBoardCards ? 'yes' : 'no'));
+    L.push('  show all: ' + (UI.settings && UI.settings.showAllHands ? 'yes' : 'no'));
+    L.push('  blind growth period: ' + (UI.settings ? UI.settings.blindGrowthHands : '—'));
+    L.push('  turn time: ' + (UI.settings ? UI.settings.turnTime : '—') + ' sec');
     L.push('');
-    L.push('=== КОНЕЦ ЛОГА ===');
+    L.push('=== END OF LOG ===');
     return L.join('\n');
   }
 
@@ -4883,104 +4905,104 @@ const UI = (() => {
     const startTs = app.sessionStartTs;
     const uptime = Date.now() - startTs;
 
-    L.push('=== PRANA POKER — ПОЛНЫЙ ЛОГ ПРИЛОЖЕНИЯ (СЕССИЯ) ===');
-    L.push('Снято: ' + now.toLocaleString('ru-RU'));
-    L.push('Версия формата: v1');
+    L.push('=== PRANA POKER — FULL APP LOG (SESSION) ===');
+    L.push('Captured: ' + now.toLocaleString('en-US'));
+    L.push('Format version: v1');
     L.push('');
 
-    L.push('--- ОКРУЖЕНИЕ ---');
+    L.push('--- ENVIRONMENT ---');
     L.push('User agent: ' + (navigator.userAgent || '—'));
-    L.push('Платформа: ' + (navigator.platform || '—'));
-    L.push('Язык: ' + (navigator.language || '—'));
-    L.push('Языки: ' + ((navigator.languages && navigator.languages.join(', ')) || '—'));
+    L.push('Platform: ' + (navigator.platform || '—'));
+    L.push('Language: ' + (navigator.language || '—'));
+    L.push('Languages: ' + ((navigator.languages && navigator.languages.join(', ')) || '—'));
     L.push('URL: ' + (location && location.href ? location.href : '—'));
-    L.push('Протокол: ' + (location && location.protocol ? location.protocol : '—'));
-    L.push('Secure context: ' + (window.isSecureContext ? 'да' : 'нет'));
-    L.push('Экран: ' + (screen.width || 0) + 'x' + (screen.height || 0));
-    L.push('Окно: ' + window.innerWidth + 'x' + window.innerHeight);
+    L.push('Protocol: ' + (location && location.protocol ? location.protocol : '—'));
+    L.push('Secure context: ' + (window.isSecureContext ? 'yes' : 'no'));
+    L.push('Screen: ' + (screen.width || 0) + 'x' + (screen.height || 0));
+    L.push('Window: ' + window.innerWidth + 'x' + window.innerHeight);
     L.push('Device pixel ratio: ' + (window.devicePixelRatio || 1));
     L.push('Visible viewport: ' + (window.visualViewport ? (Math.round(window.visualViewport.width) + 'x' + Math.round(window.visualViewport.height) + ' @scale ' + window.visualViewport.scale) : '—'));
     L.push('Orientation: ' + ((screen.orientation && screen.orientation.type) || (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait')));
-    L.push('Touch: ' + (('ontouchstart' in window) ? 'да' : 'нет'));
+    L.push('Touch: ' + (('ontouchstart' in window) ? 'yes' : 'no'));
     L.push('Max touch points: ' + (navigator.maxTouchPoints || 0));
-    L.push('Часовой пояс: ' + (Intl && Intl.DateTimeFormat ? Intl.DateTimeFormat().resolvedOptions().timeZone : '—'));
-    L.push('Старт сессии: ' + new Date(startTs).toLocaleString('ru-RU'));
-    L.push('Аптайм: ' + Math.round(uptime / 1000) + ' сек (' + uptime + ' мс)');
+    L.push('Timezone: ' + (Intl && Intl.DateTimeFormat ? Intl.DateTimeFormat().resolvedOptions().timeZone : '—'));
+    L.push('Session start: ' + new Date(startTs).toLocaleString('en-US'));
+    L.push('Uptime: ' + Math.round(uptime / 1000) + ' sec (' + uptime + ' ms)');
     L.push('');
 
-    L.push('--- СОСТОЯНИЕ СЕССИИ ---');
+    L.push('--- SESSION STATE ---');
     const s = app.session;
-    L.push('active: ' + (s.active ? 'да' : 'нет'));
-    L.push('isPaused: ' + (s.isPaused ? 'да' : 'нет'));
-    L.push('waitingForHero: ' + (s.waitingForHero ? 'да' : 'нет'));
-    L.push('heroEliminated: ' + (s.heroEliminated ? 'да' : 'нет'));
+    L.push('active: ' + (s.active ? 'yes' : 'no'));
+    L.push('isPaused: ' + (s.isPaused ? 'yes' : 'no'));
+    L.push('waitingForHero: ' + (s.waitingForHero ? 'yes' : 'no'));
+    L.push('heroEliminated: ' + (s.heroEliminated ? 'yes' : 'no'));
     L.push('heroFinishPlace: ' + s.heroFinishPlace);
-    L.push('tournamentOver: ' + (s.tournamentOver ? 'да' : 'нет'));
-    L.push('finalShown: ' + (s.finalShown ? 'да' : 'нет'));
-    L.push('huAutoActive: ' + (s.huAutoActive ? 'да' : 'нет'));
+    L.push('tournamentOver: ' + (s.tournamentOver ? 'yes' : 'no'));
+    L.push('finalShown: ' + (s.finalShown ? 'yes' : 'no'));
+    L.push('huAutoActive: ' + (s.huAutoActive ? 'yes' : 'no'));
     L.push('history.length: ' + (s.history ? s.history.length : 0));
     L.push('viewingIndex: ' + s.viewingIndex);
     L.push('activeTimers:');
-    L.push('  autoNextTimerId: ' + (s.autoNextTimerId === null ? 'нет' : 'есть'));
-    L.push('  botTimerId: ' + (s.botTimerId === null ? 'нет' : 'есть'));
-    L.push('  revealTimerId: ' + (s.revealTimerId === null ? 'нет' : 'есть'));
-    L.push('  streetEndTimerId: ' + (s.streetEndTimerId === null ? 'нет' : 'есть'));
-    L.push('  heroTimerIntervalId: ' + (s.heroTimerIntervalId === null ? 'нет' : 'есть'));
+    L.push('  autoNextTimerId: ' + (s.autoNextTimerId === null ? 'no' : 'yes'));
+    L.push('  botTimerId: ' + (s.botTimerId === null ? 'no' : 'yes'));
+    L.push('  revealTimerId: ' + (s.revealTimerId === null ? 'no' : 'yes'));
+    L.push('  streetEndTimerId: ' + (s.streetEndTimerId === null ? 'no' : 'yes'));
+    L.push('  heroTimerIntervalId: ' + (s.heroTimerIntervalId === null ? 'no' : 'yes'));
     L.push('  heroTimerRemaining: ' + s.heroTimerRemaining);
     L.push('  heroTimerTotal: ' + s.heroTimerTotal);
     L.push('replay:');
-    L.push('  active: ' + (s.replay.active ? 'да' : 'нет'));
-    L.push('  paused: ' + (s.replay.paused ? 'да' : 'нет'));
+    L.push('  active: ' + (s.replay.active ? 'yes' : 'no'));
+    L.push('  paused: ' + (s.replay.paused ? 'yes' : 'no'));
     L.push('  stepIndex: ' + s.replay.stepIndex);
     L.push('  steps.length: ' + (s.replay.steps ? s.replay.steps.length : 0));
-    L.push('  timerId: ' + (s.replay.timerId === null ? 'нет' : 'есть'));
+    L.push('  timerId: ' + (s.replay.timerId === null ? 'no' : 'yes'));
     L.push('');
-    L.push('Режим: ' + (s.replay.active ? 'реплей' : (s.viewingIndex >= 0 ? 'история' : 'живая игра')));
-    L.push('Финальный оверлей открыт: ' + (UI.anyOverlayOpen() ? 'да' : 'нет'));
+    L.push('Mode: ' + (s.replay.active ? 'replay' : (s.viewingIndex >= 0 ? 'history' : 'live game')));
+    L.push('Final overlay open: ' + (UI.anyOverlayOpen() ? 'yes' : 'no'));
     L.push('');
 
-    L.push('--- ТЕКУЩЕЕ СОСТОЯНИЕ СТОЛА ---');
+    L.push('--- CURRENT TABLE STATE ---');
     const st = s.state;
     if (!st) {
-      L.push('Состояние стола отсутствует');
+      L.push('Table state missing');
     } else {
-      L.push('Раздача #' + st.handNumber + ' | уровень ' + st.levelIndex + ' | handsAtLevel ' + st.handsAtLevel);
-      L.push('Улица: ' + st.street + ' | actingIndex: ' + st.actingIndex + ' | lastAggressorIndex: ' + (st.lastAggressorIndex === null ? '—' : st.lastAggressorIndex));
-      L.push('Баттон: ' + st.buttonIndex + ' | блайнды SB ' + st.blinds.sb + ' / BB ' + st.blinds.bb + ' / анте ' + st.blinds.ante);
-      L.push('Пот: ' + st.pot + ' | currentBet: ' + st.currentBet + ' | minRaise: ' + st.minRaise);
-      L.push('Борд: ' + (st.board && st.board.length ? st.board.map(c => c.rank + c.suit).join(' ') : 'пусто'));
+      L.push('Hand #' + st.handNumber + ' | level ' + st.levelIndex + ' | handsAtLevel ' + st.handsAtLevel);
+      L.push('Street: ' + st.street + ' | actingIndex: ' + st.actingIndex + ' | lastAggressorIndex: ' + (st.lastAggressorIndex === null ? '—' : st.lastAggressorIndex));
+      L.push('Button: ' + st.buttonIndex + ' | blinds SB ' + st.blinds.sb + ' / BB ' + st.blinds.bb + ' / ante ' + st.blinds.ante);
+      L.push('Pot: ' + st.pot + ' | currentBet: ' + st.currentBet + ' | minRaise: ' + st.minRaise);
+      L.push('Board: ' + (st.board && st.board.length ? st.board.map(c => c.rank + c.suit).join(' ') : 'empty'));
       L.push('deckIdx: ' + st._deckIdx);
-      L.push('handOver: ' + (st.handOver ? 'да' : 'нет') + ' | finalStreet: ' + (st.finalStreet || '—'));
+      L.push('handOver: ' + (st.handOver ? 'yes' : 'no') + ' | finalStreet: ' + (st.finalStreet || '—'));
       L.push('');
-      L.push('Игроки:');
+      L.push('Players:');
       for (const p of st.players) {
-        L.push('  место ' + p.seatIndex + ' | ' + p.name +
-          ' | ' + (p.isHero ? 'ГЕРОЙ' : 'бот ' + (p.botType || '—') + ' / ' + (p.botClass || '—')) +
-          ' | позиция ' + (p.position || '—') +
-          ' | стек ' + p.stack +
-          ' | карты ' + (p.holeCards && p.holeCards.length ? p.holeCards.map(c => c.rank + c.suit).join(' ') : '—') +
-          ' | folded ' + (p.folded ? 'да' : 'нет') +
-          ' | allIn ' + (p.allIn ? 'да' : 'нет') +
-          ' | eliminated ' + (p.eliminated ? 'да' : 'нет') +
-          ' | inHand ' + (p.inHand ? 'да' : 'нет') +
-          ' | acted ' + (p.acted ? 'да' : 'нет') +
-          ' | revealed ' + (p.revealed ? 'да' : 'нет') +
+        L.push('  seat ' + p.seatIndex + ' | ' + p.name +
+          ' | ' + (p.isHero ? 'HERO' : 'bot ' + (p.botType || '—') + ' / ' + (p.botClass || '—')) +
+          ' | position ' + (p.position || '—') +
+          ' | stack ' + p.stack +
+          ' | cards ' + (p.holeCards && p.holeCards.length ? p.holeCards.map(c => c.rank + c.suit).join(' ') : '—') +
+          ' | folded ' + (p.folded ? 'yes' : 'no') +
+          ' | allIn ' + (p.allIn ? 'yes' : 'no') +
+          ' | eliminated ' + (p.eliminated ? 'yes' : 'no') +
+          ' | inHand ' + (p.inHand ? 'yes' : 'no') +
+          ' | acted ' + (p.acted ? 'yes' : 'no') +
+          ' | revealed ' + (p.revealed ? 'yes' : 'no') +
           ' | lastAction ' + (p.lastAction || '—') +
           ' | committedThisStreet ' + p.committedThisStreet +
           ' | committedTotal ' + p.committedTotal +
           ' | blindPaid ' + p.blindPaid +
-          ' | hasActedThisStreet ' + (p.hasActedThisStreet ? 'да' : 'нет') +
+          ' | hasActedThisStreet ' + (p.hasActedThisStreet ? 'yes' : 'no') +
           ' | heroFinishPlace ' + (p.heroFinishPlace || 0));
       }
       if (st.showdownResults) {
         L.push('');
         L.push('Showdown:');
-        L.push('  uncontested: ' + (st.showdownResults.uncontested ? 'да' : 'нет'));
+        L.push('  uncontested: ' + (st.showdownResults.uncontested ? 'yes' : 'no'));
         L.push('  payouts: ' + safeJsonStringify(st.showdownResults.payouts));
         L.push('  pots: ' + safeJsonStringify(st.showdownResults.pots));
       }
       L.push('');
-      L.push('actionLog (' + (st.actionLog ? st.actionLog.length : 0) + ' записей, показаны последние 10):');
+      L.push('actionLog (' + (st.actionLog ? st.actionLog.length : 0) + ' entries, showing last 10):');
       const log = st.actionLog || [];
       const tail = log.slice(-10);
       for (const a of tail) {
@@ -4989,37 +5011,37 @@ const UI = (() => {
     }
     L.push('');
 
-    L.push('--- НАСТРОЙКИ ---');
+    L.push('--- SETTINGS ---');
     const settings = UI.settings || {};
     L.push('cardStyle: ' + settings.cardStyle);
     L.push('stackDisplay: ' + settings.stackDisplay);
     L.push('blindGrowthHands: ' + settings.blindGrowthHands);
     L.push('turnTime: ' + settings.turnTime);
-    L.push('showAllHands: ' + (settings.showAllHands ? 'да' : 'нет'));
-    L.push('hideHeroHand: ' + (settings.hideHeroHand ? 'да' : 'нет'));
-    L.push('hideBoardCards: ' + (settings.hideBoardCards ? 'да' : 'нет'));
-    L.push('showAllShowdown: ' + (settings.showAllShowdown ? 'да' : 'нет'));
+    L.push('showAllHands: ' + (settings.showAllHands ? 'yes' : 'no'));
+    L.push('hideHeroHand: ' + (settings.hideHeroHand ? 'yes' : 'no'));
+    L.push('hideBoardCards: ' + (settings.hideBoardCards ? 'yes' : 'no'));
+    L.push('showAllShowdown: ' + (settings.showAllShowdown ? 'yes' : 'no'));
     try {
       const raw = localStorage.getItem('pranaPokerSettings.v1');
-      L.push('localStorage size: ' + (raw ? raw.length : 0) + ' байт');
+      L.push('localStorage size: ' + (raw ? raw.length : 0) + ' bytes');
     } catch (e) {
-      L.push('localStorage: недоступен');
+      L.push('localStorage: unavailable');
     }
     L.push('');
 
-    L.push('--- СОСТОЯНИЕ UI ---');
-    L.push('hero-actions inactive: ' + (UI.el.heroActions && UI.el.heroActions.classList.contains('inactive') ? 'да' : 'нет'));
-    L.push('quick-percent-list inactive: ' + (UI.el.quickPercentList && UI.el.quickPercentList.classList.contains('inactive') ? 'да' : 'нет'));
-    if (UI.el.btnFold) L.push('Fold: disabled ' + (UI.el.btnFold.disabled ? 'да' : 'нет'));
-    if (UI.el.btnCheck) L.push('Check: disabled ' + (UI.el.btnCheck.disabled ? 'да' : 'нет'));
-    if (UI.el.btnCall) L.push('Call: disabled ' + (UI.el.btnCall.disabled ? 'да' : 'нет'));
-    if (UI.el.btnCheck) L.push('Check history-copy-active: ' + (UI.el.btnCheck.classList.contains('history-copy-active') ? 'да' : 'нет'));
-    if (UI.el.btnFold) L.push('Fold history-copy-active: ' + (UI.el.btnFold.classList.contains('history-copy-active') ? 'да' : 'нет'));
-    if (UI.el.btnCall) L.push('Call history-copy-active: ' + (UI.el.btnCall.classList.contains('history-copy-active') ? 'да' : 'нет'));
+    L.push('--- UI STATE ---');
+    L.push('hero-actions inactive: ' + (UI.el.heroActions && UI.el.heroActions.classList.contains('inactive') ? 'yes' : 'no'));
+    L.push('quick-percent-list inactive: ' + (UI.el.quickPercentList && UI.el.quickPercentList.classList.contains('inactive') ? 'yes' : 'no'));
+    if (UI.el.btnFold) L.push('Fold: disabled ' + (UI.el.btnFold.disabled ? 'yes' : 'no'));
+    if (UI.el.btnCheck) L.push('Check: disabled ' + (UI.el.btnCheck.disabled ? 'yes' : 'no'));
+    if (UI.el.btnCall) L.push('Call: disabled ' + (UI.el.btnCall.disabled ? 'yes' : 'no'));
+    if (UI.el.btnCheck) L.push('Check history-copy-active: ' + (UI.el.btnCheck.classList.contains('history-copy-active') ? 'yes' : 'no'));
+    if (UI.el.btnFold) L.push('Fold history-copy-active: ' + (UI.el.btnFold.classList.contains('history-copy-active') ? 'yes' : 'no'));
+    if (UI.el.btnCall) L.push('Call history-copy-active: ' + (UI.el.btnCall.classList.contains('history-copy-active') ? 'yes' : 'no'));
 
     const slider = UI.getSliderState ? UI.getSliderState() : null;
     if (slider) {
-      L.push('slider.active: ' + (slider.active ? 'да' : 'нет'));
+      L.push('slider.active: ' + (slider.active ? 'yes' : 'no'));
       L.push('slider.callValue: ' + slider.callValue);
       L.push('slider.minRaiseValue: ' + slider.minRaiseValue);
       L.push('slider.maxValue: ' + slider.maxValue);
@@ -5028,7 +5050,7 @@ const UI = (() => {
     }
     if (UI.el.quickPercentList) {
       const qbtns = UI.el.quickPercentList.querySelectorAll('button');
-      L.push('Быстрых ставок: ' + qbtns.length);
+      L.push('Quick bets: ' + qbtns.length);
       let i = 0;
       qbtns.forEach(btn => {
         i++;
@@ -5037,23 +5059,23 @@ const UI = (() => {
         L.push('  #' + i + ' label ' + (label ? label.textContent : '—') +
           ' | value ' + (value ? value.textContent : '—') +
           ' | target ' + (btn.dataset ? btn.dataset.target : '—') +
-          ' | disabled ' + (btn.disabled ? 'да' : 'нет'));
+          ' | disabled ' + (btn.disabled ? 'yes' : 'no'));
       });
     }
-    if (UI.el.hnPrev) L.push('hn-prev disabled: ' + (UI.el.hnPrev.disabled ? 'да' : 'нет'));
-    if (UI.el.hnNext) L.push('hn-next disabled: ' + (UI.el.hnNext.disabled ? 'да' : 'нет'));
-    if (UI.el.hnReplay) L.push('hn-replay disabled: ' + (UI.el.hnReplay.disabled ? 'да' : 'нет') + ' | text ' + UI.el.hnReplay.textContent);
-    if (UI.el.hnResume) L.push('hn-resume disabled: ' + (UI.el.hnResume.disabled ? 'да' : 'нет'));
+    if (UI.el.hnPrev) L.push('hn-prev disabled: ' + (UI.el.hnPrev.disabled ? 'yes' : 'no'));
+    if (UI.el.hnNext) L.push('hn-next disabled: ' + (UI.el.hnNext.disabled ? 'yes' : 'no'));
+    if (UI.el.hnReplay) L.push('hn-replay disabled: ' + (UI.el.hnReplay.disabled ? 'yes' : 'no') + ' | text ' + UI.el.hnReplay.textContent);
+    if (UI.el.hnResume) L.push('hn-resume disabled: ' + (UI.el.hnResume.disabled ? 'yes' : 'no'));
     if (UI.el.hnRestart) L.push('hn-restart classes: ' + UI.el.hnRestart.className);
     L.push('');
 
-    L.push('--- ТАЙМЕР ГЕРОЯ ---');
+    L.push('--- HERO TIMER ---');
     const heroSeat = document.getElementById('seat-hero');
     if (heroSeat) {
       const wrap = heroSeat.querySelector('.hero-timer-wrap');
       const zone = heroSeat.querySelector('.hero-timer-zone');
       if (wrap) L.push('data-state: ' + wrap.getAttribute('data-state'));
-      if (zone) L.push('zone.disabled: ' + (zone.classList.contains('disabled') ? 'да' : 'нет'));
+      if (zone) L.push('zone.disabled: ' + (zone.classList.contains('disabled') ? 'yes' : 'no'));
       const num = wrap ? wrap.querySelector('.timer-num') : null;
       if (num) L.push('num: ' + num.textContent);
       const fill = wrap ? wrap.querySelector('.timer-fill') : null;
@@ -5061,7 +5083,7 @@ const UI = (() => {
     }
     L.push('');
 
-    L.push('--- ФИШКИ БАТТОНА НА МЕСТАХ ---');
+    L.push('--- DEALER CHIPS ON SEATS ---');
     if (UI.el.seats) {
       const seats = UI.el.seats.querySelectorAll('.seat');
       seats.forEach(seat => {
@@ -5069,88 +5091,84 @@ const UI = (() => {
         const pos = seat.querySelector('[data-role="pos"]');
         const stack = seat.querySelector('[data-role="stack"]');
         L.push('  ' + seat.id +
-          ' | hidden-chip ' + (btn ? (btn.classList.contains('hidden') ? 'да' : 'нет') : '—') +
+          ' | hidden-chip ' + (btn ? (btn.classList.contains('hidden') ? 'yes' : 'no') : '—') +
           ' | pos ' + (pos ? pos.textContent : '—') +
           ' | stack ' + (stack ? stack.textContent : '—'));
       });
     }
     L.push('');
 
-    L.push('--- МОДУЛИ ---');
+    L.push('--- MODULES ---');
     L.push('Model:');
     try {
       const modelDump = Model.dumpStats ? Model.dumpStats() : [];
-      L.push('  ботов с моделями: ' + modelDump.length);
+      L.push('  bots with models: ' + modelDump.length);
       for (const row of modelDump) {
-        L.push('  ' + row.botId + ': оппонентов ' + row.opponents.length);
+        L.push('  ' + row.botId + ': opponents ' + row.opponents.length);
         for (const opp of row.opponents) {
-          L.push('    ' + opp.oppId + ' | рук ' + opp.hands + ' | vpip ' + opp.vpip + ' | pfr ' + opp.pfr +
+          L.push('    ' + opp.oppId + ' | hands ' + opp.hands + ' | vpip ' + opp.vpip + ' | pfr ' + opp.pfr +
             ' | calls ' + opp.calls + ' | raises ' + opp.raises + ' | folds ' + opp.folds +
             ' | showdowns ' + opp.showdowns + ' | aggIndex ' + fmtNum(opp.aggIndex));
         }
       }
     } catch (e) {
-      L.push('  [ошибка получения Model.dumpStats]');
+      L.push('  [error retrieving Model.dumpStats]');
     }
     L.push('Meta:');
     try {
       const metaDump = Meta.dumpState ? Meta.dumpState() : [];
-      L.push('  записей: ' + metaDump.length);
+      L.push('  records: ' + metaDump.length);
       for (const m of metaDump) {
         L.push('    ' + m.botId + ' | image ' + m.image + ' | handsInImage ' + m.handsInImage + ' | duration ' + m.imageDuration);
       }
     } catch (e) {
-      L.push('  [ошибка получения Meta.dumpState]');
+      L.push('  [error retrieving Meta.dumpState]');
     }
     L.push('Bots TYPES: ' + Object.keys(Bots.TYPES).join(', '));
     L.push('Bots PROFILES: ' + Object.keys(Bots.PROFILES).join(', '));
     L.push('');
 
-    L.push('--- КОНСТАНТЫ ДВИЖКА ---');
+    L.push('--- ENGINE CONSTANTS ---');
     L.push('STARTING_STACK: ' + Engine.STARTING_STACK);
     L.push('SEATS: ' + Engine.SEATS);
     L.push('STREETS: ' + Engine.STREETS.join(' → '));
     L.push('BLIND_LEVELS (' + Engine.BLIND_LEVELS.length + '):');
     for (let i = 0; i < Engine.BLIND_LEVELS.length; i++) {
       const b = Engine.BLIND_LEVELS[i];
-      L.push('  ' + i + ': SB ' + b.sb + ' / BB ' + b.bb + (b.ante > 0 ? ' / анте ' + b.ante : ''));
+      L.push('  ' + i + ': SB ' + b.sb + ' / BB ' + b.bb + (b.ante > 0 ? ' / ante ' + b.ante : ''));
     }
     L.push('POSITION_LABELS: ' + Object.keys(Engine.POSITION_LABELS).join(', '));
     L.push('');
 
-    L.push('--- ПРОИЗВОДИТЕЛЬНОСТЬ / РЕСУРСЫ ---');
+    L.push('--- PERFORMANCE / RESOURCES ---');
     try {
       if (performance && performance.memory) {
         L.push('JS heap: used ' + Math.round(performance.memory.usedJSHeapSize / 1024) + ' KB' +
           ' / total ' + Math.round(performance.memory.totalJSHeapSize / 1024) + ' KB' +
           ' / limit ' + Math.round(performance.memory.jsHeapSizeLimit / 1024) + ' KB');
       } else {
-        L.push('JS heap: недоступен');
+        L.push('JS heap: unavailable');
       }
-    } catch (e) { L.push('JS heap: ошибка'); }
+    } catch (e) { L.push('JS heap: error'); }
     L.push('');
 
-    L.push('--- ОШИБКИ СЕССИИ ---');
+    L.push('--- SESSION ERRORS ---');
     const errs = app.errors || [];
     if (errs.length === 0) {
-      L.push('Ошибок не зафиксировано');
+      L.push('No errors recorded');
     } else {
-      L.push('Всего: ' + errs.length);
+      L.push('Total: ' + errs.length);
       for (const e of errs) {
-        L.push('  [' + new Date(e.ts).toLocaleString('ru-RU') + '] ' + e.kind + ': ' + e.message);
+        L.push('  [' + new Date(e.ts).toLocaleString('en-US') + '] ' + e.kind + ': ' + e.message);
         if (e.source) L.push('    source: ' + e.source + ':' + e.line + ':' + e.col);
         if (e.stack) L.push('    stack: ' + String(e.stack).split('\n').slice(0, 5).join(' | '));
       }
     }
     L.push('');
-    L.push('=== КОНЕЦ ЛОГА ПРИЛОЖЕНИЯ ===');
+    L.push('=== END OF APP LOG ===');
     return L.join('\n');
   }
 
-  // PokerStars hand history (tournament, No Limit Hold'em).
-  // Имя стола — 'PranaPoker - Sit & Go 8-max'.
-  // Все имена латиницей: Hero, Player_N (N = seatIndex + 1).
-  // *** SUMMARY *** выводится ровно один раз.
   function buildPokerStarsHistory(snap) {
     if (!snap) return '';
     const L = [];
@@ -6340,11 +6358,11 @@ const UI = (() => {
       adjPotOdds = (typeMeta.useICM && ctx.icmBubbleFactor > 1) ? potOdds * ctx.icmBubbleFactor : potOdds;
     }
     const reasonParts = [];
-    reasonParts.push('действие: ' + finalAction.type + (finalAction.amount ? ' ' + finalAction.amount : ''));
-    if (eq !== null) reasonParts.push('эквити ' + Math.round(eq*100) + '%');
+    reasonParts.push('action: ' + finalAction.type + (finalAction.amount ? ' ' + finalAction.amount : ''));
+    if (eq !== null) reasonParts.push('equity ' + Math.round(eq*100) + '%');
     if (potOdds !== null) reasonParts.push('pot odds ' + Math.round(potOdds*100) + '%');
-    if (planDecision) reasonParts.push('по плану: ' + planDecision);
-    if (ctx.oppRead) reasonParts.push('прочтение (рук ' + ctx.oppRead.hands + ')');
+    if (planDecision) reasonParts.push('by plan: ' + planDecision);
+    if (ctx.oppRead) reasonParts.push('read (hands ' + ctx.oppRead.hands + ')');
     const reason = reasonParts.join(' | ');
     return {
       botType: bot.botType,
