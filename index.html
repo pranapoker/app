@@ -13,27 +13,26 @@
 <meta name="mobile-web-app-capable" content="no" />
 <title>Prana Poker</title>
 <link rel="icon" href="/icon.png" type="image/png" />
-<link rel="shortcut icon" href="/icon.png" type="image/png" />
-<link rel="apple-touch-icon" href="/icon.png" />
 <link rel="manifest" href="/manifest.json" />
+<link rel="apple-touch-icon" href="/icon.png" />
 <link rel="canonical" href="https://app.pranapoker.workers.dev/" />
-<meta name="description" content="Logic & Intuition Trainer in a Poker Simulator" />
+<meta name="description" content="Simulator for Logic and Intuition Training" />
 <meta name="keywords" content="Prana Poker, Poker Trainer, Poker Simulator, Poker Tournaments, Logic Training, Intuition Training" />
 <meta property="og:site_name" content="Prana Poker" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Prana Poker" />
-<meta property="og:description" content="Logic & Intuition Trainer in a Poker Simulator" />
+<meta property="og:description" content="Simulator for Logic and Intuition Training" />
 <meta property="og:url" content="https://app.pranapoker.workers.dev/" />
 <meta property="og:image" content="https://app.pranapoker.workers.dev/cover.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Prana Poker — Logic & Intuition Trainer in a Poker Simulator" />
+<meta property="og:image:alt" content="Prana Poker — Simulator for Logic and Intuition Training" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Prana Poker" />
-<meta name="twitter:description" content="Logic & Intuition Trainer in a Poker Simulator" />
+<meta name="twitter:description" content="Simulator for Logic and Intuition Training" />
 <meta name="twitter:image" content="https://app.pranapoker.workers.dev/cover.jpg" />
-<meta name="twitter:image:alt" content="Prana Poker — Logic & Intuition Trainer in a Poker Simulator" />
+<meta name="twitter:image:alt" content="Prana Poker — Simulator for Logic and Intuition Training" />
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
@@ -1575,7 +1574,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 
 <div style="position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
   <h1>Prana Poker</h1>
-  <p>Logic & Intuition Trainer in a Poker Simulator.</p>
+  <p>Simulator for Logic and Intuition Training.</p>
 </div>
 
 <div id="app">
@@ -1681,6 +1680,22 @@ window.addEventListener('unhandledrejection', function(ev) {
     });
   } catch (e) {}
 }, true);
+</script>
+
+<script>
+(function() {
+  try {
+    var tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
+    if (!tg) return;
+    try { tg.expand(); } catch (e) {}
+    try {
+      if (typeof tg.requestFullscreen === 'function') {
+        var r = tg.requestFullscreen();
+        if (r && typeof r.catch === 'function') r.catch(function() {});
+      }
+    } catch (e) {}
+  } catch (e) {}
+})();
 </script>
 
 <script>
