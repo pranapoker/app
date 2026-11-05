@@ -61,11 +61,11 @@
   --info-row-text: clamp(11px, 1.5vmin, 14px);
   --place-text: clamp(12px, 1.6vmin, 15px);
   --raise-amount-mini-w: clamp(66px, calc(9vmin + 10px), 86px);
-  --nav-btn: clamp(32px, 4.4vmin, 38px);
-  --nav-icon-size: clamp(16px, 2.4vmin, 19px);
-  --nav-gap: clamp(1px, 0.5vmin, 4px);
-  --nav-counter-w: clamp(44px, 6.2vmin, 54px);
-  --nav-counter-size: clamp(12px, 1.6vmin, 14px);
+  --nav-btn: clamp(28px, 3.8vmin, 34px);
+  --nav-icon-size: clamp(14px, 2.1vmin, 17px);
+  --nav-gap: clamp(1px, 0.35vmin, 3px);
+  --nav-counter-w: clamp(36px, 5.2vmin, 46px);
+  --nav-counter-size: clamp(11px, 1.5vmin, 13px);
   --table-radius: clamp(28px, 4vmin, 46px);
   --table-border-w: clamp(8px, 1.4vmin, 14px);
   --hero-timer-size: clamp(40px, 5.6vmin, 52px);
@@ -887,16 +887,24 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   pointer-events: auto !important;
 }
 
-#hn-restart .hn-restart-svg {
+#hand-nav .nav-svg {
   display: block;
-  width: calc(var(--nav-icon-size) + 2px);
-  height: calc(var(--nav-icon-size) + 2px);
+  width: var(--nav-icon-size);
+  height: var(--nav-icon-size);
   fill: currentColor;
   pointer-events: none;
+  flex-shrink: 0;
+}
+#hn-restart .nav-svg {
+  width: calc(var(--nav-icon-size) + 2px);
+  height: calc(var(--nav-icon-size) + 2px);
 }
 @media (max-width: 767px) {
-  #hand-nav button { font-size: calc(var(--nav-icon-size) + 2px); }
-  #hn-restart .hn-restart-svg {
+  #hand-nav .nav-svg {
+    width: calc(var(--nav-icon-size) + 1px) !important;
+    height: calc(var(--nav-icon-size) + 1px) !important;
+  }
+  #hn-restart .nav-svg {
     width: var(--nav-icon-size) !important;
     height: var(--nav-icon-size) !important;
   }
@@ -1226,7 +1234,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   .seat .bet-chips {
     bottom: calc(clamp(-54px, -6.6vmin, -48px) - 4px) !important;
   }
-  #hn-restart .hn-restart-svg {
+  #hn-restart .nav-svg {
     width: calc(var(--nav-icon-size) + 2.5px) !important;
     height: calc(var(--nav-icon-size) + 2.5px) !important;
     transform: translateY(1px) !important;
@@ -1607,13 +1615,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
         <div id="hero-actions" class="inactive">
           <div id="hand-nav">
             <div class="nav-history">
-              <button id="hn-prev" title="Back" disabled>◀︎</button>
+              <button id="hn-prev" title="Back" disabled><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 4.5a1 1 0 0 1 1.6 1.2L11 12l6.1 6.3a1 1 0 0 1-1.6 1.2l-6.8-7a1 1 0 0 1 0-1.4l6.8-6.6z"/></svg></button>
               <span class="nav-counter"><span id="hn-cur">0</span><span class="total"> / </span><span id="hn-tot">0</span></span>
-              <button id="hn-next" title="Forward" disabled>▶︎</button>
+              <button id="hn-next" title="Forward" disabled><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.5 4.5a1 1 0 0 0-1.6 1.2L13 12l-6.1 6.3a1 1 0 0 0 1.6 1.2l6.8-7a1 1 0 0 0 0-1.4L8.5 4.5z"/></svg></button>
             </div>
-            <button id="hn-replay" title="Replay">▶︎⏸︎</button>
-            <button id="hn-resume" title="Resume" disabled>▶︎▶︎</button>
-            <button id="hn-restart" title="Restart"><svg class="hn-restart-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></button>
+            <button id="hn-replay" title="Replay"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5v14l11-7z"/></svg></button>
+            <button id="hn-resume" title="Resume" disabled><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5v14l7-7z"/><path d="M12 5v14l7-7z"/></svg></button>
+            <button id="hn-restart" title="Restart"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></button>
           </div>
           <div id="hero-slider-row">
             <div id="raise-slider-track">
@@ -3464,9 +3472,16 @@ const UI = (() => {
 
   function setReplayButtonState(state) {
     if (!el.hnReplay) return;
-    if (state === 'replay') { el.hnReplay.textContent = '▶︎⏸︎'; el.hnReplay.title = 'Replay'; }
-    else if (state === 'pause') { el.hnReplay.textContent = '⏸︎'; el.hnReplay.title = 'Pause'; }
-    else if (state === 'play') { el.hnReplay.textContent = '▶︎'; el.hnReplay.title = 'Resume'; }
+    if (state === 'replay') {
+      el.hnReplay.innerHTML = '<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5v14l11-7z"/></svg>';
+      el.hnReplay.title = 'Replay';
+    } else if (state === 'pause') {
+      el.hnReplay.innerHTML = '<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+      el.hnReplay.title = 'Pause';
+    } else if (state === 'play') {
+      el.hnReplay.innerHTML = '<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5v14l11-7z"/></svg>';
+      el.hnReplay.title = 'Resume';
+    }
   }
 
   function setTimerState(state) {
