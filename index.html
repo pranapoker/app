@@ -15,7 +15,7 @@
 <link rel="icon" href="/icon.png" type="image/png" />
 <link rel="manifest" href="/manifest.json" />
 <link rel="apple-touch-icon" href="/icon.png" />
-<link rel="canonical" href="https://app.pranapoker.workers.dev/" />
+<link rel="canonical" href="https://pranapoker.github.io/app/" />
 <meta name="description" content="Simulator for Logic and Intuition Training" />
 <meta name="keywords" content="Prana Poker, Poker Trainer, Poker Simulator, Poker Tournaments, Logic Training, Intuition Training" />
 <meta property="og:site_name" content="Prana Poker" />
@@ -23,15 +23,15 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Prana Poker" />
 <meta property="og:description" content="Simulator for Logic and Intuition Training" />
-<meta property="og:url" content="https://app.pranapoker.workers.dev/" />
-<meta property="og:image" content="https://app.pranapoker.workers.dev/cover.jpg" />
+<meta property="og:url" content="https://pranapoker.github.io/app/" />
+<meta property="og:image" content="https://pranapoker.github.io/app/cover.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Prana Poker — Simulator for Logic and Intuition Training" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Prana Poker" />
 <meta name="twitter:description" content="Simulator for Logic and Intuition Training" />
-<meta name="twitter:image" content="https://app.pranapoker.workers.dev/cover.jpg" />
+<meta name="twitter:image" content="https://pranapoker.github.io/app/cover.jpg" />
 <meta name="twitter:image:alt" content="Prana Poker — Simulator for Logic and Intuition Training" />
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -62,7 +62,7 @@
   --place-text: clamp(12px, 1.6vmin, 15px);
   --raise-amount-mini-w: clamp(66px, calc(9vmin + 10px), 86px);
   --nav-btn: clamp(28px, 3.8vmin, 34px);
-  --nav-icon-size: clamp(14px, 2.1vmin, 17px);
+  --nav-icon-size: clamp(18px, 2.6vmin, 20px);
   --nav-gap: clamp(1px, 0.35vmin, 3px);
   --nav-counter-w: clamp(36px, 5.2vmin, 46px);
   --nav-counter-size: clamp(11px, 1.5vmin, 13px);
@@ -895,33 +895,20 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   pointer-events: none;
   flex-shrink: 0;
 }
-#hn-restart .nav-svg {
-  width: calc(var(--nav-icon-size) + 2px);
-  height: calc(var(--nav-icon-size) + 2px);
-}
-#hn-replay .nav-svg,
-#hn-resume .nav-svg {
-  width: calc(var(--nav-icon-size) + 3px) !important;
-  height: calc(var(--nav-icon-size) + 3px) !important;
-}
 #hn-prev .nav-svg,
 #hn-next .nav-svg {
-  width: calc(var(--nav-icon-size) + 2px) !important;
-  height: calc(var(--nav-icon-size) + 2px) !important;
+  stroke: currentColor;
+  stroke-width: 1.2px;
+  stroke-linejoin: round;
 }
 @media (max-width: 767px) {
   #hand-nav .nav-svg {
-    width: calc(var(--nav-icon-size) + 1px) !important;
-    height: calc(var(--nav-icon-size) + 1px) !important;
+    width: var(--nav-icon-size) !important;
+    height: var(--nav-icon-size) !important;
   }
   #hn-restart .nav-svg {
     width: var(--nav-icon-size) !important;
     height: var(--nav-icon-size) !important;
-  }
-  #hn-replay .nav-svg,
-  #hn-resume .nav-svg {
-    width: calc(var(--nav-icon-size) + 2px) !important;
-    height: calc(var(--nav-icon-size) + 2px) !important;
   }
 }
 
@@ -1248,11 +1235,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   }
   .seat .bet-chips {
     bottom: calc(clamp(-54px, -6.6vmin, -48px) - 4px) !important;
-  }
-  #hn-restart .nav-svg {
-    width: calc(var(--nav-icon-size) + 2.5px) !important;
-    height: calc(var(--nav-icon-size) + 2.5px) !important;
-    transform: translateY(1px) !important;
   }
   #hero-actions.inactive #hero-buttons button {
     box-shadow: 0 3px 0 rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.1) !important;
