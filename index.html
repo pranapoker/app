@@ -1500,14 +1500,16 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 .donate-copy-text {
   position: relative; display: inline-block; padding-right: 14px;
   user-select: none; -webkit-user-select: none; -webkit-user-drag: none;
+  transition: color .18s ease;
 }
 .donate-copy-text:active { color: var(--gold); }
+.donate-copy-text.flash-gold { color: var(--gold); }
 .donate-copy-icon {
   position: absolute; right: 0; top: 0; width: 7px; height: 7px; pointer-events: none;
 }
 .donate-copy-icon::before, .donate-copy-icon::after {
   content: ""; position: absolute;
-  border: 1px solid #ffffff; border-radius: 1px; background: #8a8a8a;
+  border: 1px solid #ffffff; border-radius: 1px; background: #a89040;
 }
 .donate-copy-icon::before { width: 5px; height: 5px; left: 2px; top: 0; z-index: 1; }
 .donate-copy-icon::after  { width: 5px; height: 5px; left: 0; top: 2px; z-index: 2; }
@@ -7056,7 +7058,7 @@ const UI = (() => {
           '<div class="donate-card-bottom">' +
             '<div class="donate-card-bottom-line" translate="no">USDT Tether → TRON (TRC20)</div>' +
           '</div>' +
-          '<div class="donate-card-copied">Copied</div>' +
+          '<div class="donate-card-copied">Wallet address copied</div>' +
         '</div>' +
       '</div>'
     );
