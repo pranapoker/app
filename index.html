@@ -4239,11 +4239,16 @@ const UI = (() => {
     const buttons = el.quickPercentList.querySelectorAll('button');
     buttons.forEach(btn => {
       let pointerDown = false;
-      let startY = 0;
+      let startX = 0, startY = 0;
       let startCenterX = 0;
+      let axis = null; // null | 'h' | 'v'
+      const AXIS_START_PX = 4;
+      const AXIS_BIAS = 1.3;
+
       function isActionInactive() {
         return el.heroActions.classList.contains('inactive') || el.quickPercentList.classList.contains('inactive');
       }
+
       btn.addEventListener('pointerdown', (e) => {
         if (isActionInactive() || !sliderState.active) return;
         if (e.pointerType === 'mouse') {
@@ -4252,8 +4257,10 @@ const UI = (() => {
         }
         e.stopPropagation();
         pointerDown = true;
+        startX = e.clientX;
         startY = e.clientY;
         startCenterX = thumbCenterX();
+        axis = null;
         btn.__suppressClick = false;
         try { btn.setPointerCapture && btn.setPointerCapture(e.pointerId); } catch (err) {}
       });
@@ -4262,14 +4269,29 @@ const UI = (() => {
         if (e.pointerType === 'mouse') return;
         e.stopPropagation();
         e.preventDefault();
-        const dy = startY - e.clientY;
-        if (Math.abs(dy) < 1) return;
-        btn.__suppressClick = true;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const adx = Math.abs(dx);
+        const ady = Math.abs(dy);
+        if (axis === null) {
+          if (Math.max(adx, ady) < AXIS_START_PX) return;
+          if (adx >= ady * AXIS_BIAS) axis = 'h';
+          else if (ady >= adx * AXIS_BIAS) axis = 'v';
+          else {
+            if (Math.max(adx, ady) >= 10) axis = (adx >= ady) ? 'h' : 'v';
+            else return;
+          }
+          btn.__suppressClick = true;
+        }
         const hero = state.players[heroIndex];
-        applySliderValue(state, hero, handlers, valueFromSliderCenterX(startCenterX + dy));
+        if (axis === 'h') {
+          applySliderValue(state, hero, handlers, valueFromSliderCenterX(startCenterX + dx));
+        } else {
+          applySliderValue(state, hero, handlers, valueFromSliderCenterX(startCenterX - dy));
+        }
       });
-      btn.addEventListener('pointerup', (e) => { if (!pointerDown) return; e.stopPropagation(); pointerDown = false; });
-      btn.addEventListener('pointercancel', () => { if (!pointerDown) return; pointerDown = false; });
+      btn.addEventListener('pointerup', (e) => { if (!pointerDown) return; e.stopPropagation(); pointerDown = false; axis = null; });
+      btn.addEventListener('pointercancel', () => { if (!pointerDown) return; pointerDown = false; axis = null; });
       btn.addEventListener('click', (e) => {
         if (btn.__suppressClick) {
           e.preventDefault(); e.stopPropagation(); btn.__suppressClick = false; return;
