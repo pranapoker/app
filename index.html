@@ -1134,7 +1134,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   align-items: center;
   gap: clamp(4px, 0.7vmin, 8px);
   white-space: nowrap;
-  touch-action: manipulation;
+  touch-action: none;
   min-height: calc(32px + 2px);
   width: 100%;
   transition: transform .08s ease, filter .08s ease;
@@ -4261,6 +4261,7 @@ const UI = (() => {
         if (!pointerDown || isActionInactive() || !sliderState.active) return;
         if (e.pointerType === 'mouse') return;
         e.stopPropagation();
+        e.preventDefault();
         const dy = startY - e.clientY;
         if (Math.abs(dy) < 1) return;
         btn.__suppressClick = true;
