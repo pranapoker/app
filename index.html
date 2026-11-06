@@ -612,6 +612,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   left: auto;
 }
 
+/* Mobile only: bring delta closer to stack by 4px (from 4px gap to 0) */
+@media (max-width: 767px) {
+  .seat .stack-wrap .delta-text {
+    margin-right: 0px;
+  }
+}
+
 .seat.active .seat-cards .card {
   box-shadow: 0 0 12px rgba(255,203,43,.7), 0 3px 8px rgba(0,0,0,.7);
 }
