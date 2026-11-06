@@ -51,6 +51,7 @@
   --hero-timer-size: clamp(40px, 5.6vmin, 52px);
   --hero-timer-left: calc(clamp(8px, 1.2vmin, 10px) + 2px);
   --table-col-w: min(94vw, calc((100vh - clamp(8px, 1.6vmin, 20px)) * 9 / 16));
+  --hero-actions-bottom-pad: 0px;
 }
 
 html, body {
@@ -777,7 +778,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   background: rgba(20,18,16,.92);
   border: 1px solid #3a3530;
   border-radius: 10px;
-  padding: 1px clamp(6px, 0.9vmin, 9px) clamp(3px, 0.5vmin, 5px);
+  padding: 1px clamp(6px, 0.9vmin, 9px) calc(var(--hero-actions-bottom-pad) + clamp(3px, 0.5vmin, 5px));
   padding-top: 2px;
   z-index: 45;
   transition: opacity .2s ease;
@@ -1553,6 +1554,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   .donate-card-usdt-line { font-size: clamp(11px, 1.9vmin, 13px); }
   .donate-card-bottom-line { font-size: clamp(11px, 1.7vmin, 13.5px); }
   .donate-card-copied { font-size: clamp(13px, 1.7vmin, 15.5px); }
+}
+
+@media (max-width: 767px) {
+  :root { --hero-actions-bottom-pad: 2px; }
 }
 </style>
 </head>
