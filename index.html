@@ -778,9 +778,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   border: 1px solid #3a3530;
   border-radius: 10px;
   padding: 1px clamp(6px, 0.9vmin, 9px) clamp(3px, 0.5vmin, 5px);
+  padding-top: 2px;
   z-index: 45;
   transition: opacity .2s ease;
-  padding-top: calc(1px + var(--hand-nav-lift, 1px));
 }
 #hero-actions.inactive { opacity: 0.4; }
 #hero-actions.inactive #hero-slider-row,
@@ -1360,15 +1360,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 #hero-actions.inactive #hero-buttons #btn-fold.history-copy-active *,
 #hero-actions.inactive #hero-buttons #btn-call.history-copy-active * {
   pointer-events: auto !important;
-}
-
-:root {
-  --hand-nav-lift: 1px;
-}
-@media (max-width: 767px) {
-  :root {
-    --hand-nav-lift: 2px;
-  }
 }
 
 #donate-overlay {
