@@ -1,10 +1,10 @@
 {
-  "id": "/",
+  "id": "/app",
   "name": "The Poker Way",
   "short_name": "The Poker Way",
   "description": "Logic and Intuition Training",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/app",
+  "scope": "/app",
   "display": "standalone",
   "display_override": ["standalone"],
   "orientation": "portrait",
