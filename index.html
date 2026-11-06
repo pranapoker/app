@@ -593,7 +593,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 .seat .delta-text.positive { color: #4ae08a; }
 .seat .delta-text.negative { color: #e05a4a; }
 
-/* Delta in pos-row for side/top seats */
+/* Delta inside pos-row (side seats: 1,2,3,5,6,7) */
 .seat .pos-row .delta-text {
   position: absolute;
   top: 50%;
@@ -602,20 +602,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 .seat.left .pos-row .delta-text  { left: 100%; margin-left: 1px; }
 .seat.right .pos-row .delta-text { right: 100%; margin-right: 1px; }
 
-/* Delta in stack-wrap only for hero and top-center seat */
-.seat.hero .stack-wrap .delta-text {
+/* Delta inside stack-wrap (hero and top-center seat 4): left of stack */
+.seat .stack-wrap .delta-text {
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 100%;
   margin-right: 1px;
   left: auto;
-}
-.seat.top .stack-wrap .delta-text {
-  top: 50%;
-  transform: translateY(-50%);
-  left: 100%;
-  margin-left: 0px;
-  right: auto;
 }
 
 .seat.active .seat-cards .card {
@@ -3671,10 +3665,10 @@ const UI = (() => {
         </div>
         <div class="pos-row">
           <span class="pos-name" data-role="pos">—</span>
-          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="stack-wrap">
           <span class="stack" data-role="stack"></span>
+          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="action-badge hidden" data-role="action"></div>
         <div class="winner-badge hidden" data-role="winner">WIN</div>
@@ -3686,10 +3680,10 @@ const UI = (() => {
         <div class="seat-cards" data-role="cards"></div>
         <div class="pos-row">
           <span class="pos-name" data-role="pos">—</span>
-          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="stack-wrap">
           <span class="stack" data-role="stack"></span>
+          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="action-badge hidden" data-role="action"></div>
         <div class="winner-badge hidden" data-role="winner">WIN</div>
@@ -3778,6 +3772,16 @@ const UI = (() => {
   function renderDelta(p, seat, state) {
     const deltaEl = seat.querySelector('[data-role="delta"]');
     if (!deltaEl) return;
+
+    // Hero and top-center seat: keep delta inside stack-wrap (left of stack).
+    // Side seats (1,2,3,5,6,7): move delta inside pos-row so it sits next to position.
+    const isTopCenter = seat.classList.contains('top');
+    const isHero = seat.classList.contains('hero');
+    const desiredParent = (isHero || isTopCenter) ? seat.querySelector('.stack-wrap') : seat.querySelector('.pos-row');
+    if (desiredParent && deltaEl.parentNode !== desiredParent) {
+      desiredParent.appendChild(deltaEl);
+    }
+
     if (!state.handOver || !state.showdownResults) { deltaEl.classList.add('hidden'); return; }
     const entered = p.acted === true;
     if (!entered) { deltaEl.classList.add('hidden'); return; }
