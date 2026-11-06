@@ -593,10 +593,30 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 .seat .delta-text.positive { color: #4ae08a; }
 .seat .delta-text.negative { color: #e05a4a; }
 
-.seat.left .delta-text  { left: 100%; margin-left: 1px; top: 50%; transform: translateY(calc(-50% - 1px)); }
-.seat.right .delta-text { right: 100%; margin-right: 1px; top: 50%; transform: translateY(calc(-50% - 1px)); }
-.seat.top .delta-text   { left: 100%; margin-left: 0px; top: 50%; transform: translateY(calc(-50% - 1px)); }
-.seat.hero .delta-text  { top: auto; transform: translateY(-1px); left: 100%; margin-left: 0px; bottom: auto; top: calc(-1 * clamp(16px, 2.2vmin, 22px)); }
+/* Delta in pos-row for side/top seats */
+.seat .pos-row .delta-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.seat.left .pos-row .delta-text  { left: 100%; margin-left: 1px; }
+.seat.right .pos-row .delta-text { right: 100%; margin-right: 1px; }
+
+/* Delta in stack-wrap only for hero and top-center seat */
+.seat.hero .stack-wrap .delta-text {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 100%;
+  margin-right: 1px;
+  left: auto;
+}
+.seat.top .stack-wrap .delta-text {
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100%;
+  margin-left: 0px;
+  right: auto;
+}
 
 .seat.active .seat-cards .card {
   box-shadow: 0 0 12px rgba(255,203,43,.7), 0 3px 8px rgba(0,0,0,.7);
@@ -3651,10 +3671,10 @@ const UI = (() => {
         </div>
         <div class="pos-row">
           <span class="pos-name" data-role="pos">—</span>
+          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="stack-wrap">
           <span class="stack" data-role="stack"></span>
-          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="action-badge hidden" data-role="action"></div>
         <div class="winner-badge hidden" data-role="winner">WIN</div>
@@ -3666,10 +3686,10 @@ const UI = (() => {
         <div class="seat-cards" data-role="cards"></div>
         <div class="pos-row">
           <span class="pos-name" data-role="pos">—</span>
+          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="stack-wrap">
           <span class="stack" data-role="stack"></span>
-          <span class="delta-text hidden" data-role="delta"></span>
         </div>
         <div class="action-badge hidden" data-role="action"></div>
         <div class="winner-badge hidden" data-role="winner">WIN</div>
