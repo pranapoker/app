@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no" class="notranslate">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
@@ -10,6 +10,8 @@
 <meta name="msapplication-navbutton-color" content="#000000" />
 <meta name="apple-mobile-web-app-capable" content="no" />
 <meta name="mobile-web-app-capable" content="no" />
+<meta name="google" content="notranslate" />
+<meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://web.telegram.org https://*.telegram.org;" />
 <title>The Poker Way</title>
 <link rel="icon" href="/icon.png" type="image/png" />
 <link rel="apple-touch-icon" href="/icon.png" />
@@ -111,6 +113,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   background: var(--bg);
   z-index: 600;
   display: block;
+  isolation: isolate;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1563,7 +1566,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 </head>
 <body>
 
-<div id="app">
+<div id="app" translate="no" class="notranslate" autocomplete="off" autocorrect="off" autocapitalize="off">
 
   <div id="table-scene">
     <div id="poker-table-wood">
@@ -1572,26 +1575,26 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
         <div id="swipe-center"></div>
 
         <div id="board-area">
-          <div id="place-center">
-            <div class="place-line" id="place-line">Rank: 1/8 ITM: 3</div>
+          <div id="place-center" translate="no" class="notranslate">
+            <div class="place-line" id="place-line" translate="no" class="notranslate">Rank: 1/8 ITM: 3</div>
           </div>
           <div id="top-info">
-            <div id="pot-display">Pot: 0</div>
+            <div id="pot-display" translate="no" class="notranslate">Pot: 0</div>
           </div>
           <div id="board-cards-wrap">
-            <div id="board-brand-label">THE POKER WAY</div>
+            <div id="board-brand-label" translate="no" class="notranslate">THE POKER WAY</div>
             <div id="board-cards"></div>
           </div>
           <div id="table-info">
-            <div class="info-row" id="info-blinds-row">Blinds: 10/20</div>
-            <div class="info-row faded" id="info-timer-row">10 hands: 15/30</div>
+            <div class="info-row" id="info-blinds-row" translate="no" class="notranslate">Blinds: 10/20</div>
+            <div class="info-row faded" id="info-timer-row" translate="no" class="notranslate">10 hands: 15/30</div>
           </div>
         </div>
 
         <div id="seats"></div>
 
-        <div id="hero-actions" class="inactive">
-          <div id="hand-nav">
+        <div id="hero-actions" class="inactive" translate="no">
+          <div id="hand-nav" translate="no" class="notranslate">
             <div class="nav-history">
               <button id="hn-prev" title="Back" disabled><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 4.5a1 1 0 0 1 1.6 1.2L11 12l6.1 6.3a1 1 0 0 1-1.6 1.2l-6.8-7a1 1 0 0 1 0-1.4l6.8-6.6z"/></svg></button>
               <span class="nav-counter"><span id="hn-cur">0</span><span class="total"> / </span><span id="hn-tot">0</span></span>
@@ -1601,7 +1604,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
             <button id="hn-resume" title="Resume" disabled><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4v16l9-8z"/><path d="M12 4v16l9-8z"/></svg></button>
             <button id="hn-restart" title="Restart"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></button>
           </div>
-          <div id="hero-slider-row">
+          <div id="hero-slider-row" translate="no">
             <div id="raise-slider-track">
               <div id="raise-slider-segments">
                 <div id="raise-slider-call-seg"></div>
@@ -1609,9 +1612,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
                 <div id="raise-slider-thumb"></div>
               </div>
             </div>
-            <span id="raise-amount-mini">0</span>
+            <span id="raise-amount-mini" translate="no" class="notranslate">0</span>
           </div>
-          <div id="hero-buttons">
+          <div id="hero-buttons" translate="no" class="notranslate">
             <button id="btn-fold" disabled>Fold</button>
             <button id="btn-check" disabled>Check</button>
             <button id="btn-call" disabled>
@@ -1621,7 +1624,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
           </div>
         </div>
 
-        <div id="quick-percent-list" class="inactive"></div>
+        <div id="quick-percent-list" class="inactive" translate="no"></div>
       </div>
     </div>
   </div>
@@ -1631,7 +1634,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
     <div id="final-fx"></div>
   </div>
 
-  <div id="donate-overlay" role="dialog" aria-modal="true">
+  <div id="donate-overlay" role="dialog" aria-modal="true" translate="no" class="notranslate">
     <div id="donate-card-box">
       <div id="donate-card-content"></div>
     </div>
