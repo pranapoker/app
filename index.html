@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>The Poker Way</title>
+<meta name="description" content="Logic and Intuition Training" />
 <meta name="referrer" content="no-referrer" />
 <meta name="format-detection" content="telephone=no,date=no,address=no,email=no" />
 <meta name="theme-color" content="#000000" />
@@ -12,9 +14,10 @@
 <meta name="mobile-web-app-capable" content="no" />
 <meta name="google" content="notranslate" />
 <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://web.telegram.org https://*.telegram.org;" />
-<title>The Poker Way</title>
-<link rel="icon" href="/icon.png" type="image/png" />
-<link rel="apple-touch-icon" href="/icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+<link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png" />
+<link rel="manifest" href="/manifest.json" />
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
@@ -54,6 +57,7 @@
   --hero-timer-left: calc(clamp(8px, 1.2vmin, 10px) + 2px);
   --table-col-w: min(94vw, calc((100vh - clamp(8px, 1.6vmin, 20px)) * 9 / 16));
   --hero-actions-bottom-pad: 0px;
+  --nav-counter-lift: 0px;
 }
 
 html, body {
@@ -852,7 +856,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   font-family: "Inter", "Segoe UI", system-ui, sans-serif;
   flex-shrink: 0;
   line-height: 1;
-  transform: translateY(1px);
+  transform: translateY(calc(1px - var(--nav-counter-lift)));
 }
 #hand-nav .nav-counter .total { color: var(--muted); }
 
@@ -1560,7 +1564,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
 }
 
 @media (max-width: 767px) {
-  :root { --hero-actions-bottom-pad: 3px; }
+  :root {
+    --hero-actions-bottom-pad: 3px;
+    --nav-counter-lift: 1px;
+  }
 }
 </style>
 </head>
@@ -1669,6 +1676,21 @@ window.addEventListener('unhandledrejection', function(ev) {
     });
   } catch (e) {}
 }, true);
+</script>
+
+<script>
+(function() {
+  try {
+    var ua = navigator.userAgent || '';
+    var isMobile = /Android|iPhone|iPad|iPod|Mobile|Opera Mini|IEMobile|BlackBerry|Windows Phone/i.test(ua)
+                   || (('ontouchstart' in window) && (navigator.maxTouchPoints || 0) > 0 && window.innerWidth <= 1024);
+    if (isMobile) return;
+    window.addEventListener('beforeinstallprompt', function(e) {
+      try { e.preventDefault(); } catch (err) {}
+      return false;
+    });
+  } catch (e) {}
+})();
 </script>
 
 <script>
