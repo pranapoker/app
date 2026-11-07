@@ -268,7 +268,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   pointer-events: none;
   text-align: center;
   width: 100%;
-  transform: translateY(-20px);
+  transform: translateY(calc(-20px + 8px));
 }
 #place-center.hidden { display: none; }
 #place-center .place-line {
@@ -3405,7 +3405,7 @@ const UI = (() => {
   ];
 
   const BOARD_AREA_SHIFT_DOWN = 8;
-  const BOARD_AREA_LIFT_UP = 14;
+  const BOARD_AREA_LIFT_UP = 22;
   const BOT_SEAT_LIFT_UP = 10;
   const SUIT_CLASS = { s: 'suit-spades', h: 'suit-hearts', d: 'suit-diamonds', c: 'suit-clubs' };
   const SUIT_SYMBOL = { s: '♠', h: '♥', d: '♦', c: '♣' };
