@@ -824,10 +824,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar,
   filter: grayscale(0.6) brightness(0.5);
   box-shadow: 0 3px 0 transparent, inset 0 1px 0 rgba(255,255,255,.1);
 }
-#hero-actions.inactive #raise-slider-thumb {
-  opacity: 0.35;
-  filter: grayscale(0.6) brightness(0.55);
-}
+#hero-actions.inactive #raise-slider-thumb,
 #hero-actions.inactive #raise-slider-segments {
   opacity: 0.5;
   filter: grayscale(0.6) brightness(0.7);
@@ -4380,7 +4377,6 @@ const UI = (() => {
   }
 
   function bindSliderZoneHandlers(state, heroIndex, handlers) {
-    if (!el.sliderRow && document.getElementById('hero-slider-row')) el.sliderRow = document.getElementById('hero-slider-row');
     const row = document.getElementById('hero-slider-row');
     if (!row) return;
     if (row.__boundZone) return;
@@ -4390,9 +4386,10 @@ const UI = (() => {
     let startX = 0, startY = 0;
     let startCenterX = 0;
     let axis = null;
-    let startValueAtDown = 0;
+    let movedBeyondTap = false;
     const AXIS_START_PX = 4;
     const AXIS_BIAS = 1.3;
+    const TAP_MOVE_THRESHOLD = 6;
 
     function isDisabled() {
       return el.heroActions.classList.contains('inactive') || !sliderState.active;
@@ -4406,10 +4403,10 @@ const UI = (() => {
         startX = e.clientX;
         startY = e.clientY;
         axis = null;
+        movedBeyondTap = false;
         try { row.setPointerCapture && row.setPointerCapture(e.pointerId); } catch (err) {}
-        const hero = state.players[heroIndex];
         if (el.sliderThumb) el.sliderThumb.classList.add('pressed');
-        applySliderValue(state, hero, handlers, valueFromPointer(e.clientX));
+        applySliderValue(state, state.players[heroIndex], handlers, valueFromPointer(e.clientX));
         return;
       }
       e.stopPropagation();
@@ -4417,8 +4414,8 @@ const UI = (() => {
       startX = e.clientX;
       startY = e.clientY;
       startCenterX = thumbCenterX();
-      startValueAtDown = sliderState.currentValue;
       axis = null;
+      movedBeyondTap = false;
       try { row.setPointerCapture && row.setPointerCapture(e.pointerId); } catch (err) {}
     });
 
@@ -4445,6 +4442,7 @@ const UI = (() => {
         }
         if (el.sliderThumb) el.sliderThumb.classList.add('pressed');
       }
+      if (Math.max(adx, ady) > TAP_MOVE_THRESHOLD) movedBeyondTap = true;
       const hero = state.players[heroIndex];
       if (axis === 'h') {
         applySliderValue(state, hero, handlers, valueFromSliderCenterX(startCenterX + dx));
@@ -4457,8 +4455,13 @@ const UI = (() => {
       if (!pointerDown) return;
       if (e) e.stopPropagation();
       pointerDown = false;
-      axis = null;
       if (el.sliderThumb) el.sliderThumb.classList.remove('pressed');
+      if (e && e.pointerType !== 'mouse' && !movedBeyondTap && isDisabled() === false) {
+        const hero = state.players[heroIndex];
+        applySliderValue(state, hero, handlers, valueFromPointer(e.clientX));
+      }
+      axis = null;
+      movedBeyondTap = false;
     }
     row.addEventListener('pointerup', onUp);
     row.addEventListener('pointercancel', onUp);
