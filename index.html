@@ -3406,6 +3406,7 @@ const UI = (() => {
 
   const BOARD_AREA_SHIFT_DOWN = 8;
   const BOARD_AREA_LIFT_UP = 22;
+  const BOARD_AREA_LIFT_UP_DESKTOP = 30;
   const BOT_SEAT_LIFT_UP = 10;
   const SUIT_CLASS = { s: 'suit-spades', h: 'suit-hearts', d: 'suit-diamonds', c: 'suit-clubs' };
   const SUIT_SYMBOL = { s: '♠', h: '♥', d: '♦', c: '♣' };
@@ -3480,13 +3481,18 @@ const UI = (() => {
     el.huGlow.classList.toggle('visible', !!on);
   }
 
+  function isDesktopViewport() {
+    return typeof window !== 'undefined' && window.innerWidth >= 768;
+  }
+
   function updateBoardAreaOffset() {
     if (!el.boardArea || !el.placeCenter) return;
     const rankH = el.placeCenter.offsetHeight || 0;
     const gapVal = 2;
     const totalShift = rankH + gapVal - 6 - 2;
+    const lift = isDesktopViewport() ? BOARD_AREA_LIFT_UP_DESKTOP : BOARD_AREA_LIFT_UP;
     const baseTop = 'calc(46% - 8px)';
-    el.boardArea.style.top = `calc(${baseTop} - ${totalShift}px + 2px + ${BOARD_AREA_SHIFT_DOWN}px - ${BOARD_AREA_LIFT_UP}px)`;
+    el.boardArea.style.top = `calc(${baseTop} - ${totalShift}px + 2px + ${BOARD_AREA_SHIFT_DOWN}px - ${lift}px)`;
   }
 
   function alignPercentBlockBottom() {
